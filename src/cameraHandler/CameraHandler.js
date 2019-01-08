@@ -1,31 +1,35 @@
 import React, { Component } from 'react';
 
+import css from './cameraHandler.css';
+
 class CameraHandler extends Component {
 
-  state = {
-    isCameraSupported: false
+  constructor(...props) {
+    super(...props);
+
+    this.videoRef = React.createRef();
+  }
+
+  static state = {
+    isCameraSupported: false,
   }
 
   componentWillMount() {
     if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+
       this.setState({
         isCameraSupported: true
       })
 
-      // navigator.mediaDevices.getUserMedia({ video: true }).then(function(stream) {
-      //     //video.src = window.URL.createObjectURL(stream);
-      //     video.srcObject = stream;
-      //     video.play();
-      // });
+      navigator.mediaDevices.getUserMedia({ video: true }).then((stream) => {
+        this.videoRef.current.srcObject = stream;
+        this.videoRef.current.play();
+      });
     }
   }
 
   render() {
-    console.log(this.state.isCameraSupported);
-
-    const output = this.state.isCameraSupported ? <div>Camera supported</div> : <div>Camera not supported</div>;
-
-    return (output);
+    return (<video ref={this.videoRef}></video>);
   }
 }
 

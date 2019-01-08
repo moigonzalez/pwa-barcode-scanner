@@ -5,7 +5,7 @@ import CameraHandler from './cameraHandler';
 
 const App = () => (
   <>
-    <h1>Hey there!</h1>
+    <h1>PWA Barcode Scanner</h1>
     <CameraHandler />
   </>
 );
