@@ -1,0 +1,1 @@
+# PWA Barcode Scanner 🛒

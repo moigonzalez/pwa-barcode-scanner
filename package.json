@@ -1,0 +1,21 @@
+{
+  "name": "pwa-barcode-scanner",
+  "version": "1.0.0",
+  "description": "Barcode scanner with product information",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "barcode",
+    "scanner",
+    "pwa",
+    "camera"
+  ],
+  "author": "Moises Gonzalez <moigonzit@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0"
+  }
+}
