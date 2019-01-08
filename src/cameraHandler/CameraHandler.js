@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Quagga from 'quagga';
 
 import css from './cameraHandler.css';
 
@@ -14,22 +15,44 @@ class CameraHandler extends Component {
     isCameraSupported: false,
   }
 
-  componentWillMount() {
+  onDetected(result) {
+    console.log(result);
+    console.log('detected!');
+    Quagga.stop();
+  }
+
+  componentDidMount() {
     if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
 
       this.setState({
         isCameraSupported: true
       })
 
-      navigator.mediaDevices.getUserMedia({ video: true }).then((stream) => {
-        this.videoRef.current.srcObject = stream;
-        this.videoRef.current.play();
+      Quagga.init({
+        inputStream : {
+          name : "Live",
+          type : "LiveStream",
+          target: document.querySelector('#video')    // Or '#yourElement' (optional)
+        },
+        numOfWorkers: 1,
+        locate: true,
+        decoder : {
+          readers : ['ean_reader', 'ean_8_reader', 'upc_reader', 'code_128_reader']
+        }
+      }, (err) => {
+          if (err) {
+              console.log(err);
+              return
+          }
+          console.log("Initialization finished. Ready to start");
+          Quagga.start();
       });
+      Quagga.onDetected(this.onDetected);
     }
   }
 
   render() {
-    return (<video ref={this.videoRef}></video>);
+    return (<div id="video"></div>);
   }
 }
 

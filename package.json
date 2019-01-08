@@ -17,6 +17,7 @@
   "author": "Moises Gonzalez <moigonzit@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "quagga": "^0.12.1",
     "react": "^16.7.0",
     "react-dom": "^16.7.0"
   },
