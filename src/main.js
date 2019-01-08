@@ -1,13 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter } from 'react-router-dom';
 
-import CameraHandler from './cameraHandler';
+import App from './routes/App';
 
-const App = () => (
-  <>
-    <h1>PWA Barcode Scanner</h1>
-    <CameraHandler />
-  </>
-);
-
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>, document.getElementById('root'));

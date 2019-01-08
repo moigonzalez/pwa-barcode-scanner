@@ -16,9 +16,8 @@ class CameraHandler extends Component {
   }
 
   onDetected(result) {
-    console.log(result);
-    console.log('detected!');
     Quagga.stop();
+    window.location.pathname = `/product/${result.codeResult.code}`;
   }
 
   componentDidMount() {
@@ -32,7 +31,7 @@ class CameraHandler extends Component {
         inputStream : {
           name : "Live",
           type : "LiveStream",
-          target: document.querySelector('#video')    // Or '#yourElement' (optional)
+          target: document.querySelector('#video')
         },
         numOfWorkers: 1,
         locate: true,
@@ -44,7 +43,6 @@ class CameraHandler extends Component {
               console.log(err);
               return
           }
-          console.log("Initialization finished. Ready to start");
           Quagga.start();
       });
       Quagga.onDetected(this.onDetected);
