@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import Quagga from 'quagga';
+import React, { lazy, Component, Suspense } from 'react';
+const Video = lazy(() => import('./Video'));
 
 import css from './cameraHandler.css';
 
@@ -8,49 +8,40 @@ class CameraHandler extends Component {
   constructor(...props) {
     super(...props);
 
-    this.videoRef = React.createRef();
+    this.state = {
+      isCameraSupported: false,
+      isCamEnabled: false
+    };
   }
 
-  static state = {
-    isCameraSupported: false,
+  onCamEnabled = () => {
+    console.log(this.state.isCamEnabled);
+    this.setState({
+      isCamEnabled: true
+    });
   }
 
-  onDetected(result) {
-    Quagga.stop();
-    window.location.pathname = `/product/${result.codeResult.code}`;
-  }
-
-  componentDidMount() {
+  componentWillMount() {
     if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-
       this.setState({
         isCameraSupported: true
-      })
-
-      Quagga.init({
-        inputStream : {
-          name : "Live",
-          type : "LiveStream",
-          target: document.querySelector('#video')
-        },
-        numOfWorkers: 1,
-        locate: true,
-        decoder : {
-          readers : ['ean_reader', 'ean_8_reader', 'upc_reader', 'code_128_reader']
-        }
-      }, (err) => {
-          if (err) {
-              console.log(err);
-              return
-          }
-          Quagga.start();
       });
-      Quagga.onDetected(this.onDetected);
     }
   }
 
   render() {
-    return (<div id="video"></div>);
+    return (
+      <>
+        <button onClick={this.onCamEnabled}>Activate camera</button>
+        {this.state.isCamEnabled ?
+          <Suspense fallback={<div>Loading...</div>}>
+            <Video />
+          </Suspense>
+          :
+          <div>Waiting for cam to be enabled...</div>
+        }
+      </>
+    );
   }
 }
 
