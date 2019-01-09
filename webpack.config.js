@@ -52,7 +52,10 @@ module.exports = {
       filename: 'index.html'
     }),
     new ScriptExtHtmlWebpackPlugin({
-      defaultAttribute: 'defer'
+      defaultAttribute: 'defer',
+      preload: {
+        test: /\.js$/
+      }
     }),
     new MiniCssExtractPlugin()
   ],
