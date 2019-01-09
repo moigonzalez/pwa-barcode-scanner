@@ -5,10 +5,12 @@ import CameraHandler from '../cameraHandler';
 import ProductDisplay from '../productDisplay';
 
 const Main = () => (
-  <Switch>
-    <Route exact path='/' component={CameraHandler}/>
-    <Route path='/product/:id' component={ProductDisplay}/>
-  </Switch>
+  <main>
+    <Switch>
+      <Route exact path='/' component={CameraHandler}/>
+      <Route path='/product/:id' component={ProductDisplay}/>
+    </Switch>
+  </main>
 );
 
 export default Main;
