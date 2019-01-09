@@ -1,0 +1,10 @@
+@import '~reset-css/reset.css';
+
+@font-face {
+  font-family: 'Comfortaa-Light';
+  src: url('../public/fonts/Comfortaa-Light.ttf');
+}
+
+body {
+  font-family: 'Comfortaa-Light';
+}
