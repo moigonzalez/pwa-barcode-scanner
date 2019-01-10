@@ -2,6 +2,7 @@ const path = require('path');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
+const { InjectManifest } = require('workbox-webpack-plugin');
 
 module.exports = {
   entry: './src/main.js',
@@ -55,7 +56,10 @@ module.exports = {
     new ScriptExtHtmlWebpackPlugin({
       defaultAttribute: 'defer'
     }),
-    new MiniCssExtractPlugin()
+    new MiniCssExtractPlugin(),
+    new InjectManifest({
+      swSrc: './src/service-worker.js'
+    })
   ],
   devServer: {
     contentBase: path.join(__dirname, 'dist'),
