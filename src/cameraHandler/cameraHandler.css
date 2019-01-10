@@ -1,4 +1,8 @@
-video {
-  height: 300px;
-  width: 400px;
+.camera__enable {
+  position: absolute;
+  bottom: 80px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  color: white;
 }

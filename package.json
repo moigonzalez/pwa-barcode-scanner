@@ -20,6 +20,7 @@
     "quagga": "^0.12.1",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
+    "react-feather": "^1.1.5",
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
     "reset-css": "^4.0.1"

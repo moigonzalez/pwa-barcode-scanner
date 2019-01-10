@@ -7,4 +7,26 @@
 
 body {
   font-family: 'Comfortaa-Light';
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.btn__round {
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+  background-color: #333333;
+  border: none;
+  box-shadow: 2px 2px 7px 1px #666666;
+  transform: translateY(0);
+  transition: background-color 0.2s ease-in-out;
+}
+
+.btn__round:hover {
+  background-color: #4D4D4D;
+}
+
+.btn__round:focus {
+  box-shadow: 0px 0px 2px 0px #4D4D4D;
+  transform: translateY(2px);
 }

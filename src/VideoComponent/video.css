@@ -1,0 +1,15 @@
+.video__container {
+  height: 400px;
+  width: 100%;
+}
+
+.video {
+  height: 100%;
+  width: 100%;
+}
+
+.skeleton__video {
+  height: 100%;
+  width: 100%;
+  background-color: #808080;
+}

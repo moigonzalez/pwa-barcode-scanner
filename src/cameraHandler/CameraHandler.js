@@ -1,5 +1,7 @@
 import React, { lazy, Component, Suspense } from 'react';
-const Video = lazy(() => import('./Video'));
+import { Camera } from 'react-feather';
+
+const Video = lazy(() => import('../VideoComponent/Video'));
 
 import css from './cameraHandler.css';
 
@@ -32,7 +34,6 @@ class CameraHandler extends Component {
   render() {
     return (
       <>
-        <button onClick={this.onCamEnabled}>Activate camera</button>
         {this.state.isCamEnabled ?
           <Suspense fallback={<div>Loading...</div>}>
             <Video />
@@ -40,6 +41,9 @@ class CameraHandler extends Component {
           :
           <div>Waiting for cam to be enabled...</div>
         }
+        <button className="btn__round camera__enable" onClick={this.onCamEnabled}>
+          <Camera />
+        </button>
       </>
     );
   }

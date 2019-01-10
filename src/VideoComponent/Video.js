@@ -1,11 +1,16 @@
 import React, { Component } from 'react';
 
 import Quagga from 'quagga';
+import VideoSkeleton from './Video.skeleton';
 
 class Video extends Component {
 
   constructor(...props) {
     super(...props);
+
+    state = {
+      videoInit: false
+    }
 
     this.videoRef = React.createRef();
   }
@@ -35,13 +40,22 @@ class Video extends Component {
               return
           }
           Quagga.start();
+
+          this.setState({
+            videoInit: true
+          })
       });
       Quagga.onDetected(this.onDetected);
     }
   }
 
   render() {
-    return (<div id="video"></div>);
+    return (
+      this.state.videoInit ?
+      <div className="video" id="video"></div>
+      :
+      <VideoSkeleton />
+      );
   }
 }
 
