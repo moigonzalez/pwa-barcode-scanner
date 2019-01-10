@@ -1,10 +1,11 @@
 import React from 'react';
 
+import Header from '../header';
 import Main from './Main';
 
 const App = () => (
   <div>
-    <h1>PWA Barcode Scanner</h1>
+    <Header />
     <Main />
   </div>
 );

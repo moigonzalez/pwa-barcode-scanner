@@ -1,7 +1,7 @@
 import React, { lazy, Component, Suspense } from 'react';
 import { Camera } from 'react-feather';
 
-const Video = lazy(() => import('../VideoComponent/Video'));
+const Video = lazy(() => import('../videoComponent'));
 
 import css from './cameraHandler.css';
 
