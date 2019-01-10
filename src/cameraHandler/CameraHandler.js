@@ -34,7 +34,10 @@ class CameraHandler extends Component {
   render() {
     return (
       <>
-        {this.state.isCamEnabled ?
+        {this.state.isCameraSupported ?
+          <div>Camera is not supported 😢</div>
+        :
+        this.state.isCamEnabled ?
           <Suspense fallback={<div>Loading...</div>}>
             <Video />
           </Suspense>

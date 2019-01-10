@@ -52,9 +52,9 @@ class Video extends Component {
   render() {
     return (
       this.state.videoInit ?
-      <div className="video" id="video"></div>
-      :
-      <VideoSkeleton />
+        <div className="video" id="video"></div>
+        :
+        <VideoSkeleton />
       );
   }
 }
