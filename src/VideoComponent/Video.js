@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import Quagga from 'quagga';
 import VideoSkeleton from './Video.skeleton';
 
+import styles from './video.css';
+
 class Video extends Component {
 
   constructor(...props) {
@@ -51,10 +53,13 @@ class Video extends Component {
 
   render() {
     return (
-      this.state.videoInit ?
-        <div className="video" id="video"></div>
-        :
-        <VideoSkeleton />
+      <div className="video__container">
+        {this.state.videoInit ?
+          <div className="video" id="video"></div>
+          :
+          <VideoSkeleton />
+        }
+      </div>
       );
   }
 }
