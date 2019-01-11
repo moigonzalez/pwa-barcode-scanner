@@ -4,7 +4,7 @@ import dataHandler from '../dataHandler';
 import { Camera } from 'react-feather';
 import { ArrowDown } from 'react-feather';
 
-const Video = lazy(() => import('../videoComponent'));
+const Video = lazy(() => import('../Video'));
 
 import css from './cameraHandler.css';
 
