@@ -12,6 +12,9 @@
     "type" : "git",
     "url" : "https://github.com/moigonzalez/pwa-barcode-scanner.git"
   },
+  "engines" : {
+    "node" : ">=8.4.0"
+  },
   "keywords": [
     "barcode",
     "scanner",
