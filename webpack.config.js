@@ -58,7 +58,8 @@ module.exports = {
     }),
     new MiniCssExtractPlugin(),
     new InjectManifest({
-      swSrc: './src/service-worker.js'
+      swSrc: './src/service-worker.js',
+      exclude: [/\.json$/]
     })
   ],
   devServer: {

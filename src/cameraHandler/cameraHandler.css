@@ -6,3 +6,16 @@
   margin: 0 auto;
   color: white;
 }
+
+.cameraHandler__message {
+  padding: 0 20px;
+  text-align: center;
+  font-size: 30px;
+  margin-top: 50%;
+  line-height: 1.2;
+}
+
+.cameraHandler__messageIcon {
+  font-size: 40px;
+  padding-top: 15px;
+}

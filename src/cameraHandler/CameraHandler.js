@@ -1,5 +1,8 @@
 import React, { lazy, Component, Suspense } from 'react';
+import dataHandler from '../dataHandler';
+
 import { Camera } from 'react-feather';
+import { ArrowDown } from 'react-feather';
 
 const Video = lazy(() => import('../videoComponent'));
 
@@ -12,12 +15,12 @@ class CameraHandler extends Component {
 
     this.state = {
       isCameraSupported: false,
-      isCamEnabled: false
+      isCamEnabled: dataHandler.isCameraPermissionGranted()
     };
   }
 
   onCamEnabled = () => {
-    console.log(this.state.isCamEnabled);
+    dataHandler.cameraPermissionGranted();
     this.setState({
       isCamEnabled: true
     });
@@ -35,18 +38,25 @@ class CameraHandler extends Component {
     return (
       <>
         {this.state.isCameraSupported ?
-          <div>Camera is not supported 😢</div>
-        :
-        this.state.isCamEnabled ?
+          this.state.isCamEnabled ?
           <Suspense fallback={<div>Loading...</div>}>
             <Video />
           </Suspense>
           :
-          <div>Waiting for cam to be enabled...</div>
+          <div className="cameraHandler__message">Enable your camera with the button below
+          <br/>
+          <div className="cameraHandler__messageIcon"><ArrowDown size={35}/></div>
+          </div>
+          :
+          <div>Camera is not supported 😢</div>
         }
-        <button className="btn__round camera__enable" onClick={this.onCamEnabled}>
-          <Camera />
-        </button>
+        {this.state.isCamEnabled ?
+          ''
+          :
+          <button className="btn__round camera__enable" onClick={this.onCamEnabled}>
+            <Camera />
+          </button>
+        }
       </>
     );
   }

@@ -10,8 +10,9 @@ class Video extends Component {
   constructor(...props) {
     super(...props);
 
-    state = {
-      videoInit: false
+    this.state = {
+      videoInit: false,
+      videoError: false
     }
 
     this.videoRef = React.createRef();
@@ -38,8 +39,10 @@ class Video extends Component {
         }
       }, (err) => {
           if (err) {
-              console.log(err);
-              return
+            this.setState({
+              videoError: true
+            });
+            return;
           }
           Quagga.start();
 
@@ -54,10 +57,13 @@ class Video extends Component {
   render() {
     return (
       <div className="video__container">
-        {this.state.videoInit ?
-          <div className="video" id="video"></div>
+        {this.state.videoError ?
+          <VideoSkeleton error={true}/>
           :
-          <VideoSkeleton />
+          <div>
+            <div className="video" id="video"></div>
+            {this.state.videoInit ? '' : <VideoSkeleton />}
+          </div>
         }
       </div>
       );
