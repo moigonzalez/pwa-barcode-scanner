@@ -1,0 +1,38 @@
+.productDisplay__container {
+  padding: 15px;
+}
+
+.button__container {
+  padding: 10px;
+}
+
+.productDisplay__title {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.productDisplay__titleContainer {
+  display: flex;
+}
+
+.productDisplay__textContainer {
+  margin-left: 15px;
+}
+
+.productDisplay__barcode {
+  font-size: 12px;
+  margin-top: 10px;
+}
+
+.productDisplay__foodType {
+  margin-top: 20px;
+}
+
+.productDisplay__diets {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.productDisplay__diets--item {
+  margin-top: 10px;
+}

@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import ProductDataDisplay from './ProductDataDisplay';
 import { Link } from 'react-router-dom';
 
+import styles from './productDisplay.css';
+
 class ProductDisplay extends Component {
   constructor(...props) {
     super(...props);
@@ -33,7 +35,9 @@ class ProductDisplay extends Component {
       return (
         <>
           <ProductDataDisplay data={this.state.productInfo}/>
-          <Link to='/'>Back to cam</Link>
+          <div className="button__container">
+            <Link className="btn" to='/'>Back to cam</Link>
+          </div>
         </>
       );
     }
