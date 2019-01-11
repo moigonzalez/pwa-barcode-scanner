@@ -20,6 +20,17 @@ class ProductDataFilter {
       .filter(x => x === 'en:milk')
       .length > 0;
   }
+
+  nutrientLevels() {
+    const res = [];
+    for (const key in this.d.nutrient_levels) {
+      res.push({
+        title: key.replace('-', ' '),
+        value:this.d.nutrient_levels[key]
+      });
+    }
+    return res;
+  }
 }
 
 export default ProductDataFilter;

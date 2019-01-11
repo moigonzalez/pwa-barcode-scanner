@@ -16,9 +16,9 @@ const ProductDataDisplay = (data) => {
   return (
     <div className="productDisplay__container">
       <ProductDisplayTitle code={code} productName={product.product_name} thumb={product.image_thumb_url}/>
-      <NutrientLevels />
-      <div className="productDisplay__foodType">
-        <h3 className="productDisplay__diets">Special Diets</h3>
+      <NutrientLevels product={p}/>
+      <div className="productDisplay__section">
+        <h3 className="productDisplay__sectionTitle">Special Diets</h3>
         {p.isVegetarian() ? <div className="productDisplay__diets--item">🌱 Vegetarian Friendly</div> : ''}
         {p.containsGluten() ? <div className="productDisplay__diets--item">🌾 Has Gluten</div> : ''}
         {p.containsLactose() ? <div className="productDisplay__diets--item">🐄 Has Lactose</div> : ''}
