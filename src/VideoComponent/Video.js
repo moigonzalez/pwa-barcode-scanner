@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router';
 
 import Quagga from 'quagga';
 import VideoSkeleton from './Video.skeleton';
@@ -7,8 +8,8 @@ import styles from './video.css';
 
 class Video extends Component {
 
-  constructor(...props) {
-    super(...props);
+  constructor(props) {
+    super(props);
 
     this.state = {
       videoInit: false,
@@ -18,9 +19,18 @@ class Video extends Component {
     this.videoRef = React.createRef();
   }
 
-  onDetected(result) {
+  onDetected = (result) => {
     Quagga.stop();
-    window.location.pathname = `/product/${result.codeResult.code}`;
+
+    this.props.history.push(`/product/${result.codeResult.code}`);
+  }
+
+  onInitSuccess() {
+    Quagga.start();
+
+    this.setState({
+      videoInit: true
+    });
   }
 
   componentDidMount() {
@@ -44,11 +54,7 @@ class Video extends Component {
             });
             return;
           }
-          Quagga.start();
-
-          this.setState({
-            videoInit: true
-          })
+          this.onInitSuccess();
       });
       Quagga.onDetected(this.onDetected);
     }
@@ -70,4 +76,4 @@ class Video extends Component {
   }
 }
 
-export default Video;
+export default withRouter(Video);
