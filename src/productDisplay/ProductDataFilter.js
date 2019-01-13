@@ -4,6 +4,9 @@ class ProductDataFilter {
   }
 
   isVegetarian() {
+    if (!this.d.categories_tags) {
+      return undefined;
+    }
     return this.d.categories_tags
       .filter(x => x === 'en:plant-based-foods-and-beverages' || x === 'en:plant-based-foods')
       .length > 0;
@@ -30,6 +33,14 @@ class ProductDataFilter {
       });
     }
     return res;
+  }
+
+  containsPalmOil() {
+    return this.d.ingredients_from_palm_oil_n === 1;
+  }
+
+  additives() {
+    return this.d.additives_tags.map(x => x.split(':')[1]);
   }
 }
 

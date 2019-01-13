@@ -36,3 +36,31 @@
 .productDisplay__diets--item {
   margin-top: 10px;
 }
+
+.productDisplay__list--item {
+  margin-top: 10px;
+}
+
+.productDisplay__list--label {
+  text-transform: capitalize;
+}
+
+.productDisplay__list--label:after {
+  content: ':';
+}
+
+.productDisplay__list--value {
+  margin-left: 5px;
+}
+
+.productDisplay__list--value.high {
+  color: #ff6347;
+}
+
+.productDisplay__list--value.moderate {
+  color: #ffa500;
+}
+
+.productDisplay__list--value.low {
+  color: #3cb371;
+}
