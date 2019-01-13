@@ -3,12 +3,16 @@ class ProductDataFilter {
     this.d = data;
   }
 
-  isEmpty(value) {
-    return this.d[value] === undefined || Object.keys(this.d[value]).length === 0;
+  isUndefined(value) {
+    return this.d[value] === undefined;
+  }
+
+  isEmpty() {
+    return Object.keys(this.d[value]).length === 0;
   }
 
   isVegetarian() {
-    if (this.isEmpty('category_tags')) {
+    if (this.isUndefined('categories_tags')) {
       return undefined;
     }
     return this.d.categories_tags
@@ -17,7 +21,7 @@ class ProductDataFilter {
   }
 
   containsGluten() {
-    if (this.isEmpty('allergens_tags')) {
+    if (this.isUndefined('allergens_tags')) {
       return undefined;
     }
     return this.d.allergens_tags
@@ -26,7 +30,7 @@ class ProductDataFilter {
   }
 
   containsLactose() {
-    if (this.isEmpty('allergens_tags')) {
+    if (this.isUndefined('allergens_tags')) {
       return undefined;
     }
     return this.d.allergens_tags
@@ -37,7 +41,7 @@ class ProductDataFilter {
   nutrientLevels() {
     const res = [];
 
-    if (this.isEmpty('nutrient_levels')) {
+    if (this.isUndefined('nutrient_levels')) {
       return undefined;
     }
 
@@ -58,7 +62,7 @@ class ProductDataFilter {
   }
 
   additives() {
-    if (this.isEmpty('additives_tags')) {
+    if (this.isUndefined('additives_tags')) {
       return undefined;
     }
     return this.d.additives_tags.map(x => x.split(':')[1]);
