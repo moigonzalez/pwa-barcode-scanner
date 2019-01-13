@@ -3,6 +3,7 @@ import ProductDataFilter from './ProductDataFilter';
 import ProductDisplayTitle from './ProductDisplayTitle';
 import NutrientLevels from './NutrientLevels';
 import DietaryData from './DietaryData';
+import Additives from './Additives';
 
 const ProductDataDisplay = (data) => {
   const { code, status, product } = data.data;
@@ -17,6 +18,7 @@ const ProductDataDisplay = (data) => {
   return (
     <div className="productDisplay__container">
       <ProductDisplayTitle code={code} productName={product.product_name} thumb={product.image_thumb_url}/>
+      <Additives product={p} />
       <NutrientLevels product={p}/>
       <DietaryData product={p} />
     </div>

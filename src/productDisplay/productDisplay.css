@@ -31,6 +31,15 @@
 .productDisplay__sectionTitle {
   font-size: 16px;
   font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.productDisplay__additive {
+  text-transform: uppercase;
+}
+
+.productDisplay__additive + .productDisplay__additive{
+  margin-left: 5px;
 }
 
 .productDisplay__diets--item {
