@@ -3,6 +3,7 @@ const HtmlWebPackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
 const { InjectManifest } = require('workbox-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 module.exports = {
   entry: './src/main.js',
@@ -57,6 +58,11 @@ module.exports = {
       defaultAttribute: 'defer'
     }),
     new MiniCssExtractPlugin(),
+    new CopyWebpackPlugin([
+      { from: './public/manifest.json', to: './'},
+      { from: './public/favicon.ico', to: './'},
+      { from: './public/icons/*', to: './icons' }],
+    ),
     new InjectManifest({
       swSrc: './src/service-worker.js',
       exclude: [/\.json$/]

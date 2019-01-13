@@ -53,7 +53,7 @@ class CameraHandler extends Component {
         {this.state.isCamEnabled ?
           ''
           :
-          <button className="btn__round camera__enable" onClick={this.onCamEnabled}>
+          <button aria-label="Enable Camera" className="btn__round camera__enable" onClick={this.onCamEnabled}>
             <Camera />
           </button>
         }
