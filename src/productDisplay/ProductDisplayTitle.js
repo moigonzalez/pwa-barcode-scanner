@@ -3,7 +3,13 @@ import React from 'react';
 const ProductDisplayTitle = ({productName, code, thumb}) => (
   <div className="productDisplay__titleContainer">
     <div className="productDisplay__thumbContainer">
-      <img src={thumb} alt="Product front image" />
+      {thumb ?
+        <img src={thumb} alt="Product front image" />
+        :
+        <div className="skeleton__image">
+          Picture not found
+        </div>
+      }
     </div>
     <div className="productDisplay__textContainer">
       <h2 className="productDisplay__title">{productName}</h2>

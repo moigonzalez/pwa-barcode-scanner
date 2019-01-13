@@ -3,6 +3,7 @@ import ProductDataDisplay from './ProductDataDisplay';
 import { Link } from 'react-router-dom';
 
 import styles from './productDisplay.css';
+import ProductDisplaySkeleton from './productDisplay.skeleton';
 
 class ProductDisplay extends Component {
   constructor(...props) {
@@ -29,7 +30,7 @@ class ProductDisplay extends Component {
 
   render() {
     if (this.state.isLoading) {
-      return (<h2>Loading...</h2>);
+      return (<ProductDisplaySkeleton />);
     }
     else {
       return (

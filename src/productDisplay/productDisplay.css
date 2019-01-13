@@ -17,6 +17,11 @@
 
 .productDisplay__textContainer {
   margin-left: 15px;
+  flex: 1;
+}
+
+.productDisplay__thumbContainer {
+  flex: 0.5;
 }
 
 .productDisplay__barcode {

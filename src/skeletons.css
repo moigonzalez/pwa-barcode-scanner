@@ -1,0 +1,60 @@
+.skeleton__video {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #808080;
+  overflow: hidden;
+}
+
+.skeleton__video svg {
+  height: 100px;
+  width: 100px;
+  display: block;
+  margin: 0 auto;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%) translateX(-50%);
+  left: 50%;
+}
+
+.skeleton__video--loading {
+  position: absolute;
+  animation: rotate 4s linear infinite;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.skeleton__message {
+  display: block;
+  position: absolute;
+  text-align: center;
+  top: 90%;
+  left: 0;
+  right: 0;
+}
+
+.skeleton__image {
+  width: 100px;
+  background-color: #808080;
+  height: 120px;
+  display: flex;
+  align-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.skeleton__title {
+  width: 60%;
+  height: 18px;
+  background-color: #808080;
+}
+
+.skeleton__text {
+  width: 70%;
+  height: 12px;
+  background-color: #808080;
+  margin-top: 10px;
+}
