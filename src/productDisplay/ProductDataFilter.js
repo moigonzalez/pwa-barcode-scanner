@@ -3,8 +3,12 @@ class ProductDataFilter {
     this.d = data;
   }
 
+  isEmpty(value) {
+    return this.d[value] === undefined || Object.keys(this.d[value]).length === 0;
+  }
+
   isVegetarian() {
-    if (!this.d.categories_tags) {
+    if (this.isEmpty('category_tags')) {
       return undefined;
     }
     return this.d.categories_tags
@@ -13,12 +17,18 @@ class ProductDataFilter {
   }
 
   containsGluten() {
+    if (this.isEmpty('allergens_tags')) {
+      return undefined;
+    }
     return this.d.allergens_tags
       .filter(x => x === 'en:gluten')
       .length > 0;
   }
 
   containsLactose() {
+    if (this.isEmpty('allergens_tags')) {
+      return undefined;
+    }
     return this.d.allergens_tags
       .filter(x => x === 'en:milk')
       .length > 0;
@@ -26,6 +36,11 @@ class ProductDataFilter {
 
   nutrientLevels() {
     const res = [];
+
+    if (this.isEmpty('nutrient_levels')) {
+      return undefined;
+    }
+
     for (const key in this.d.nutrient_levels) {
       res.push({
         title: key.replace('-', ' '),
@@ -36,10 +51,16 @@ class ProductDataFilter {
   }
 
   containsPalmOil() {
+    if (!this.d.ingredients_from_palm_oil_n) {
+      return undefined;
+    }
     return this.d.ingredients_from_palm_oil_n === 1;
   }
 
   additives() {
+    if (this.isEmpty('additives_tags')) {
+      return undefined;
+    }
     return this.d.additives_tags.map(x => x.split(':')[1]);
   }
 }
