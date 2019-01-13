@@ -11,6 +11,10 @@ body {
   margin: 0 auto;
 }
 
+p {
+  margin-bottom: 10px;
+}
+
 .btn__round {
   height: 60px;
   width: 60px;
@@ -33,12 +37,18 @@ body {
 
 .btn {
   display: inline-block;
+  background-color: #333;
   border: solid 1px #333;
   padding: 10px;
   border-radius: 4px;
   text-decoration: none;
-  color: #333;
+  color: #fff;
   text-transform: uppercase;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 600;
+  text-align: center;
+}
+
+.btn.full-wdth {
+  display: block;
 }

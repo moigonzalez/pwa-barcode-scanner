@@ -36,7 +36,7 @@ class ProductDisplay extends Component {
         <>
           <ProductDataDisplay data={this.state.productInfo}/>
           <div className="button__container">
-            <Link className="btn" to='/'>Back to cam</Link>
+            <Link className="btn full-wdth" to='/'>Back to cam</Link>
           </div>
         </>
       );

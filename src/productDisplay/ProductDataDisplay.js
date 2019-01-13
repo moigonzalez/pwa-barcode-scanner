@@ -4,13 +4,15 @@ import ProductDisplayTitle from './ProductDisplayTitle';
 import NutrientLevels from './NutrientLevels';
 import DietaryData from './DietaryData';
 import Additives from './Additives';
+import AddProductInfo from '../addProductInfo';
+import ProductNotFound from '../productNotFound';
 
 const ProductDataDisplay = (data) => {
   const { code, status, product } = data.data;
   let p;
 
   if (status !== 1) {
-    return (<h2 className="productDisplay__title not-found">Product not found 😢</h2>);
+    return <ProductNotFound />;
   }
 
   p = new ProductDataFilter(product);
@@ -21,6 +23,7 @@ const ProductDataDisplay = (data) => {
       <Additives product={p} />
       <NutrientLevels product={p}/>
       <DietaryData product={p} />
+      <AddProductInfo barcode={code} />
     </div>
     );
 };
