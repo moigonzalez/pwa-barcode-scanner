@@ -23,7 +23,7 @@ const ProductDataDisplay = (data) => {
       <Additives product={p} />
       <NutrientLevels product={p}/>
       <DietaryData product={p} />
-      <AddProductInfo barcode={code} />
+      <AddProductInfo status={status} barcode={code} />
     </div>
     );
 };
