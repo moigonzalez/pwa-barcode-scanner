@@ -59,6 +59,7 @@ module.exports = {
     }),
     new MiniCssExtractPlugin(),
     new CopyWebpackPlugin([
+      { from: './public/_redirects', to: './'},
       { from: './public/manifest.json', to: './'},
       { from: './public/favicon.ico', to: './'},
       { from: './public/icons/*', to: './icons' }],
