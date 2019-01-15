@@ -4,16 +4,16 @@ const DietaryData = (product) => (
   <div className="productDisplay__section">
     <h3 className="productDisplay__sectionTitle">Special Diets</h3>
     <div className="productDisplay__list--item">
-      <span>🌱 Vegetarian Friendly:</span>
+      <span>🌱 Plant Based:</span>
       <span className="productDisplay__list--value">
-        {product.product.isVegetarian() === undefined ?
+        {product.product.isPlantBased() === undefined ?
         'Unknown ❓'
         :
-        product.product.isVegetarian() ? 'Yes' : 'No'}
+        product.product.isPlantBased() ? 'Yes' : 'No'}
       </span>
     </div>
     <div className="productDisplay__list--item">
-      <span>🌾 Gluten Free:</span>
+      <span>🌾 Contains Gluten:</span>
       <span className="productDisplay__list--value">
         {product.product.containsGluten() === undefined ?
         'Unknown ❓'
@@ -22,7 +22,7 @@ const DietaryData = (product) => (
       </span>
     </div>
     <div className="productDisplay__list--item">
-      <span>🐄 Lactose:</span>
+      <span>🐄 Contains Lactose:</span>
       <span className="productDisplay__list--value">
         {product.product.containsLactose() === undefined ?
         'Unknown ❓'

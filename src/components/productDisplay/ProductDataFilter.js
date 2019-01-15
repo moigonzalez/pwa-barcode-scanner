@@ -11,10 +11,11 @@ class ProductDataFilter {
     return Object.keys(this.d[value]).length === 0;
   }
 
-  isVegetarian() {
+  isPlantBased() {
     if (this.isUndefined('categories_tags')) {
       return undefined;
     }
+    console.log(this.d.categories_tags);
     return this.d.categories_tags
       .filter(x => x === 'en:plant-based-foods-and-beverages' || x === 'en:plant-based-foods')
       .length > 0;
@@ -22,7 +23,7 @@ class ProductDataFilter {
 
   containsGluten() {
     if (this.isUndefined('allergens_tags')) {
-      return undefined;
+      return false;
     }
     return this.d.allergens_tags
       .filter(x => x === 'en:gluten')
@@ -31,7 +32,7 @@ class ProductDataFilter {
 
   containsLactose() {
     if (this.isUndefined('allergens_tags')) {
-      return undefined;
+      return false;
     }
     return this.d.allergens_tags
       .filter(x => x === 'en:milk')
@@ -56,7 +57,7 @@ class ProductDataFilter {
 
   containsPalmOil() {
     if (!this.d.ingredients_from_palm_oil_n) {
-      return undefined;
+      return false;
     }
     return this.d.ingredients_from_palm_oil_n === 1;
   }
