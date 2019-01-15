@@ -15,7 +15,6 @@ class ProductDataFilter {
     if (this.isUndefined('categories_tags')) {
       return undefined;
     }
-    console.log(this.d.categories_tags);
     return this.d.categories_tags
       .filter(x => x === 'en:plant-based-foods-and-beverages' || x === 'en:plant-based-foods')
       .length > 0;
