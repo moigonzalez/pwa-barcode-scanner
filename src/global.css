@@ -1,12 +1,12 @@
 @import '~reset-css/reset.css';
 
 @font-face {
-  font-family: 'Comfortaa-Light';
-  src: url('../public/fonts/Comfortaa-Light.ttf');
+  font-family: 'GeosansLight';
+  src: url('../public/fonts/GeosansLight.ttf');
 }
 
 body {
-  font-family: 'Comfortaa-Light';
+  font-family: 'GeosansLight';
   max-width: 680px;
   margin: 0 auto;
 }
