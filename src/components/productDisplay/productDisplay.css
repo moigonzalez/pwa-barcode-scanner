@@ -31,6 +31,10 @@
 
 .productDisplay__section {
   margin-top: 20px;
+  display: inline-block;
+  vertical-align: top;
+  width: calc(50% - 10px);
+  padding-right: 10px;
 }
 
 .productDisplay__sectionTitle {

@@ -13,7 +13,7 @@ const DietaryData = (product) => (
       </span>
     </div>
     <div className="productDisplay__list--item">
-      <span>🌾 Contains Gluten:</span>
+      <span>🌾 Gluten:</span>
       <span className="productDisplay__list--value">
         {product.product.containsGluten() === undefined ?
         'Unknown ❓'
@@ -22,7 +22,7 @@ const DietaryData = (product) => (
       </span>
     </div>
     <div className="productDisplay__list--item">
-      <span>🐄 Contains Lactose:</span>
+      <span>🐄 Lactose:</span>
       <span className="productDisplay__list--value">
         {product.product.containsLactose() === undefined ?
         'Unknown ❓'
