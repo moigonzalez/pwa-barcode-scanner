@@ -62,15 +62,20 @@ class Video extends Component {
 
   render() {
     return (
-      <div className="video__container">
-        {this.state.videoError ?
-          <VideoSkeleton error={true}/>
-          :
-          <div>
-            <div className="video" id="video"></div>
-            {this.state.videoInit ? '' : <VideoSkeleton />}
-          </div>
-        }
+      <div>
+        <div className="video__explanation">
+          <p>Scan product's barcode and get its nutritional values 🍎</p>
+        </div>
+        <div className="video__container">
+          {this.state.videoError ?
+            <VideoSkeleton error={true}/>
+            :
+            <div>
+              <div className="video" id="video"></div>
+              {this.state.videoInit ? '' : <VideoSkeleton />}
+            </div>
+          }
+        </div>
       </div>
       );
   }

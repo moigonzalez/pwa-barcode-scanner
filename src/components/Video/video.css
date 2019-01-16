@@ -22,3 +22,14 @@
 .video video {
   width: 100%;
 }
+
+.drawingBuffer {
+  display: none;
+}
+
+.video__explanation {
+  max-width: 230px;
+  margin: 20px auto;
+  text-align: center;
+  font-size: 24px;
+}

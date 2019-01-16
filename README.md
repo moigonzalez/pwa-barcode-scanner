@@ -1,6 +1,6 @@
 # PWA Barcode Scanner 🛒
 
-Scan product's barcodes to get its nutritional values 🍎
+Scan product's barcode and get its nutritional values 🍎
 
 # Installation
 
