@@ -14,11 +14,7 @@ Scan product's barcode and get its nutritional values 🍎
 
 # Screenshots
 
-<img src="demo/barcode_reader.jpg" height="300px" />
-
-<img src="demo/product_page.jpg" height="300px" />
-
-<img src="demo/not_found_page.jpg" height="300px" />
+<img src="demo/screenshots.jpg" height="300px" />
 
 # Installation
 
