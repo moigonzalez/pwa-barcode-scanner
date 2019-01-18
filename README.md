@@ -2,6 +2,20 @@
 
 Scan product's barcode and get its nutritional values 🍎
 
+# Demo
+
+## See it live
+
+[https://pwascanit.com/](https://pwascanit.com/)
+
+## Gif
+
+<img src="demo/pwascanit.gif" alt="App scanning product demo" height="450px"/>
+
+# Screenshots
+
+<img src="demo/screenshots.jpg" height="300px" />
+
 # Installation
 
 ```bash
