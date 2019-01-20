@@ -1,4 +1,8 @@
 .productNotFound__container {
   text-align: center;
-  margin-top: 20px;
+  padding: 10px;
+}
+
+.productDisplay__title.not-found {
+  margin: 10px 0;
 }

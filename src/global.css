@@ -52,3 +52,17 @@ p {
 .btn.full-wdth {
   display: block;
 }
+
+.textInput {
+  border: solid 1px #333;
+  border-radius: 4px;
+  margin-right: 5px;
+  padding: 10px;
+  transition: box-shadow 0.2s ease-in-out;
+  box-shadow: 0px 0px 0px 0px #fff;
+}
+
+.textInput:focus {
+  box-shadow: 1px 1px 6px 0px #666666;
+  outline: none;
+}
