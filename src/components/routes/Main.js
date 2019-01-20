@@ -7,7 +7,7 @@ import ProductNotFound from '../productNotFound';
 import { HistoryDisplay } from '../history';
 
 const Main = () => (
-  <main>
+  <main className="main__wrapper">
     <Switch>
       <Route exact path='/' component={CameraHandler}/>
       <Route exact path='/product/not-found' component={ProductNotFound} />

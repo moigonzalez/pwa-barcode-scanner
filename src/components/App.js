@@ -7,7 +7,7 @@ import Footer from './footer';
 const App = () => (
   <div>
     <Header />
-    <Main className="main__wrapper" />
+    <Main />
     <Footer />
   </div>
 );
