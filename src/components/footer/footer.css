@@ -1,0 +1,20 @@
+.footer {
+  display: flex;
+  position: fixed;
+  width: 100%;
+  max-width: 680px;
+  bottom: 0;
+  height: 80px;
+}
+
+.footer__link {
+  display: flex;
+  flex: 0.5;
+  border: solid 1px #fff;
+  background-color: #333;
+  color: #fff;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  text-decoration: none;
+}

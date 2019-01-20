@@ -3,7 +3,7 @@
 @font-face {
   font-family: 'GeosansLight';
   src: url('../public/fonts/GeosansLight.ttf');
-  font-display: optional;
+  font-display: swap;
 }
 
 body {
@@ -14,6 +14,10 @@ body {
 
 p {
   margin-bottom: 10px;
+}
+
+.main__wrapper {
+  margin-bottom: 80px;
 }
 
 .btn__round {
