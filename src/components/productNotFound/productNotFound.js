@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import AddProductInfo from '../addProductInfo';
 
+import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router';
 
 import styles from './productNotFound.css';
@@ -29,7 +30,8 @@ class ProductNotFound extends Component {
   }
 
   render() {
-    return (<div className="productNotFound__container">
+    return (
+    <div className="productNotFound__container">
       <h2 className="productDisplay__title not-found">Product not found 😢</h2>
       <p>The barcode: {this.code} gave no results!</p>
       <form onSubmit={this.onSubmit}>
@@ -38,6 +40,9 @@ class ProductNotFound extends Component {
         <button className="btn" type="submit">Find</button>
       </form>
       <AddProductInfo />
+      <div className="button__container">
+        <Link className="btn full-wdth" to='/'>Back to cam</Link>
+      </div>
     </div>)
   }
 };
