@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { VideoOff } from 'react-feather';
-import { Loader } from 'react-feather';
+import VideoOff from 'react-feather/dist/icons/video-off';
+import Loader from 'react-feather/dist/icons/loader';
 
 const VideoSkeleton = (props) => (
   <div className="skeleton__video">

@@ -1,8 +1,8 @@
 import React, { lazy, Component, Suspense } from 'react';
 import dataHandler from '../dataHandler';
 
-import { Camera } from 'react-feather';
-import { ArrowDown } from 'react-feather';
+import Camera from 'react-feather/dist/icons/camera';
+import ArrowDown from 'react-feather/dist/icons/arrow-down';
 
 const Video = lazy(() => import('../Video'));
 
