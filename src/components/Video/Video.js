@@ -13,16 +13,42 @@ class Video extends Component {
 
     this.state = {
       videoInit: false,
-      videoError: false
+      videoError: false,
+      attemps: 0
     }
 
     this.videoRef = React.createRef();
   }
 
-  onDetected = (result) => {
-    Quagga.stop();
+  onInfoFetched = (res) => {
+    const { status, code } = res;
+    const attemps = this.state.attemps + 1;
 
-    this.props.history.push(`/product/${result.codeResult.code}`);
+    console.log('status', status);
+
+    console.log('attemps', attemps);
+
+    this.setState({
+      attemps: attemps
+    })
+
+    if (status === 1 || this.state.attemps > 3) {
+      this.onProductFound(code);
+    } else {
+      Quagga.onDetected(this.onDetected);
+    }
+  }
+
+  onProductFound = (code) => {
+    Quagga.stop();
+    this.props.history.push(`/product/${code}`);
+  }
+
+  onDetected = (result) => {
+    Quagga.offDetected(this.onDetected);
+    fetch(`https://world.openfoodfacts.org/api/v0/product/${result.codeResult.code}.json`)
+      .then(res => res.json())
+      .then(res => this.onInfoFetched(res));
   }
 
   onInitSuccess() {
