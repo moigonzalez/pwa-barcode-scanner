@@ -36,7 +36,7 @@ class ProductNotFound extends Component {
       <p>The barcode: {this.code} gave no results!</p>
       <form onSubmit={this.onSubmit}>
         <p>You can also enter the barcode below and try again:</p>
-        <input placeholder="e.g. 7622300710613" className="textInput" type="number" onChange={this.onInputChange}/>
+        <input placeholder="e.g. 7622300710613" className="textInput" required type="number" onChange={this.onInputChange}/>
         <button className="btn" type="submit">Find</button>
       </form>
       <AddProductInfo />
