@@ -1,11 +1,12 @@
 import React from 'react';
+import { Redirect } from 'react-router-dom';
+
 import ProductDataFilter from './ProductDataFilter';
 import ProductDisplayTitle from './ProductDisplayTitle';
 import NutrientLevels from './NutrientLevels';
 import DietaryData from './DietaryData';
 import Additives from './Additives';
 import AddProductInfo from '../addProductInfo';
-import ProductNotFound from '../productNotFound';
 import Nutriscore from './Nutriscore';
 
 const ProductDataDisplay = (data) => {
@@ -13,7 +14,12 @@ const ProductDataDisplay = (data) => {
   let p;
 
   if (status !== 1) {
-    return <ProductNotFound />;
+    return <Redirect
+            to={{
+              pathname: '/product/not-found',
+              search: `?code=${code}`
+            }}
+            />;
   }
 
   p = new ProductDataFilter(product);
