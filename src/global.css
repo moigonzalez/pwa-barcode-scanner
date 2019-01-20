@@ -3,10 +3,11 @@
 @font-face {
   font-family: 'GeosansLight';
   src: url('../public/fonts/GeosansLight.ttf');
+  font-display: optional;
 }
 
 body {
-  font-family: 'GeosansLight';
+  font-family: 'GeosansLight', Helvetica, sans-serif;
   max-width: 680px;
   margin: 0 auto;
 }
