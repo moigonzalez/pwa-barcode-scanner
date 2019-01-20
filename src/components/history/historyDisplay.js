@@ -12,7 +12,14 @@ class HistoryDisplay extends Component {
     const  products = HistoryHandler.getProducts();
     return (
       <div className="history__list">
-        {products.map((x, i) => {
+        {products === null ?
+          <div className="history__emptyState">
+            <h2 className="history__emptyState__title">
+              Scan some products to see them here! 🥚
+            </h2>
+          </div>
+          :
+          products.map((x, i) => {
           const { thumb, name, score } = JSON.parse(x.data);
           return (
           <div key={i} className="history__listItem">

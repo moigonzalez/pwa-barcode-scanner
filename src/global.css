@@ -16,6 +16,10 @@ p {
   margin-bottom: 10px;
 }
 
+.main__wrapper {
+  margin-bottom: 80px;
+}
+
 .btn__round {
   height: 60px;
   width: 60px;

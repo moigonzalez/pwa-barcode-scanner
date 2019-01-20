@@ -40,9 +40,6 @@ class ProductNotFound extends Component {
         <button className="btn" type="submit">Find</button>
       </form>
       <AddProductInfo />
-      <div className="button__container">
-        <Link className="btn full-wdth" to='/'>Back to cam</Link>
-      </div>
     </div>)
   }
 };

@@ -30,6 +30,9 @@ class HistoryHandler {
   }
 
   static getProducts() {
+    if (this.getProductsId() === null) {
+      return null;
+    }
     return this.getProductsId()
         .split(',')
         .map(x => ({code: x, data: this.getProduct(x)}));
