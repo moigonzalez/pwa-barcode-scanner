@@ -9,7 +9,7 @@ import NutrientLevels from './NutrientLevels';
 import DietaryData from './DietaryData';
 import Additives from './Additives';
 import AddProductInfo from '../addProductInfo';
-import NutriScore from '../NutriScore';
+import NutriScore from '../nutriScore';
 
 const ProductDataDisplay = (data) => {
   const { code, status, product } = data.data;

@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
 import HistoryHandler from './historyHandler';
-import NutriScore from '../NutriScore';
 
 import ArrowRight from 'react-feather/dist/icons/arrow-right';
 
