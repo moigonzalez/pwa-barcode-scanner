@@ -78,10 +78,3 @@
 .productDisplay__list--value.low {
   color: #3cb371;
 }
-
-.nutriscore__image {
-  display: block;
-  max-width: 150px;
-  margin: 0 auto;
-  padding-top: 10px;
-}

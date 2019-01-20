@@ -10,23 +10,29 @@ class HistoryHandler {
   }
 
   static updateProducts(productToAdd) {
-    if (this.getProducts() === null) {
+    if (this.getProductsId() === null) {
       localStorage.setItem('products', productToAdd);
       return;
     }
-    if (this.getProducts().includes(productToAdd)) {
+    if (this.getProductsId().includes(productToAdd)) {
       return;
     }
 
-    localStorage.setItem('products', this.getProducts().split(',').concat(`${productToAdd}`).join());
+    localStorage.setItem('products', this.getProductsId().split(',').concat(`${productToAdd}`).join());
   }
 
   static getProduct(id) {
     return localStorage.getItem(id);
   }
 
-  static getProducts() {
+  static getProductsId() {
     return localStorage.getItem('products');
+  }
+
+  static getProducts() {
+    return this.getProductsId()
+        .split(',')
+        .map(x => ({code: x, data: this.getProduct(x)}));
   }
 }
 

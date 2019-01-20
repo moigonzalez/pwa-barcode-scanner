@@ -9,7 +9,7 @@ import NutrientLevels from './NutrientLevels';
 import DietaryData from './DietaryData';
 import Additives from './Additives';
 import AddProductInfo from '../addProductInfo';
-import Nutriscore from './Nutriscore';
+import NutriScore from '../NutriScore';
 
 const ProductDataDisplay = (data) => {
   const { code, status, product } = data.data;
@@ -31,7 +31,7 @@ const ProductDataDisplay = (data) => {
   return (
     <div className="productDisplay__container">
       <ProductDisplayTitle code={code} productName={product.product_name} thumb={product.image_thumb_url}/>
-      <Nutriscore score={product.nutrition_grades} />
+      <NutriScore score={product.nutrition_grades} extraClass="nutriscore__detail" />
       <NutrientLevels product={p}/>
       <DietaryData product={p} />
       <Additives product={p} />
