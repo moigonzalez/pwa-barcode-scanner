@@ -14,7 +14,7 @@ class Video extends Component {
     this.state = {
       videoInit: false,
       videoError: false,
-      attemps: 0
+      attempts: 0
     }
 
     this.videoRef = React.createRef();
@@ -22,17 +22,13 @@ class Video extends Component {
 
   onInfoFetched = (res) => {
     const { status, code } = res;
-    const attemps = this.state.attemps + 1;
-
-    console.log('status', status);
-
-    console.log('attemps', attemps);
+    const attempts = this.state.attempts + 1;
 
     this.setState({
-      attemps: attemps
+      attempts: attempts
     })
 
-    if (status === 1 || this.state.attemps > 3) {
+    if (status === 1 || this.state.attempts > 3) {
       this.onProductFound(code);
     } else {
       Quagga.onDetected(this.onDetected);
