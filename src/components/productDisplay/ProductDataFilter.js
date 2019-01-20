@@ -3,6 +3,14 @@ class ProductDataFilter {
     this.d = data;
   }
 
+  productDataThumbView() {
+    return {
+      name: this.d.product_name,
+      thumb: this.d.image_thumb_url,
+      score: this.d.nutrition_grades
+    }
+  }
+
   isUndefined(value) {
     return this.d[value] === undefined;
   }

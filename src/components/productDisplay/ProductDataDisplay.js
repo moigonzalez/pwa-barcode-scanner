@@ -1,6 +1,8 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
 
+import { HistoryHandler } from '../history';
+
 import ProductDataFilter from './ProductDataFilter';
 import ProductDisplayTitle from './ProductDisplayTitle';
 import NutrientLevels from './NutrientLevels';
@@ -23,6 +25,8 @@ const ProductDataDisplay = (data) => {
   }
 
   p = new ProductDataFilter(product);
+
+  HistoryHandler.addProduct(code, p.productDataThumbView());
 
   return (
     <div className="productDisplay__container">
