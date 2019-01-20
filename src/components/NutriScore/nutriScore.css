@@ -5,3 +5,9 @@
   margin: 0 auto;
   padding-top: 10px;
 }
+
+.nutriscore__history {
+  max-width: 90px;
+  margin-right: 30px;
+  float: right;
+}

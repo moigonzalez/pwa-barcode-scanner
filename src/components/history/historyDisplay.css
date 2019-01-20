@@ -1,0 +1,51 @@
+.history__listItem {
+  display: flex;
+  position: relative;
+  padding: 10px;
+  transition: box-shadow 0.2s ease-in-out;
+}
+
+.history__listItem:hover {
+  box-shadow: 1px 1px 6px 0px #666666;
+}
+
+.history__listItem + .history__listItem {
+  border-top: solid 1px #ddd;
+}
+
+.history__thumbWrapper {
+  flex: 0.2;
+  text-align: center;
+}
+
+.history__thumb {
+  max-width: 50px;
+  margin: 0 auto;
+}
+
+.history__textWrapper {
+  flex: 0.6;
+  padding-left: 10px;
+}
+
+.history__title {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.history__barcode {
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.history__linkWrapper {
+  flex: 0.2;
+  color: #333;
+}
+
+.history__arrowRight {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 20px;
+}
