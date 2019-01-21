@@ -24,7 +24,13 @@ class HistoryDisplay extends Component {
           return (
           <div key={i} className="history__listItem">
             <div className="history__thumbWrapper">
-              <img src={thumb} className="history__thumb" alt={`${name} thumb image`}/>
+              {thumb ?
+                <img src={thumb} className="history__thumb" alt={`${name} thumb image`}/>
+                :
+                <div className="skeleton__imageThumb">
+                  Picture not found
+                </div>
+              }
             </div>
             <div className="history__textWrapper">
               <h2 className="history__title">{name}</h2>

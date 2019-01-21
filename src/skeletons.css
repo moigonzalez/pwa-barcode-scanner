@@ -46,6 +46,16 @@
   text-align: center;
 }
 
+.skeleton__imageThumb {
+  width: 100%;
+  background-color: #808080;
+  height: 75px;
+  display: flex;
+  align-content: center;
+  align-items: center;
+  text-align: center;
+}
+
 .skeleton__title {
   width: 60%;
   height: 18px;
