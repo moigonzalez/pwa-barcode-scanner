@@ -64,3 +64,8 @@
 .history__delete {
   display: flex;
 }
+
+.history__deleteBtn {
+  border: none;
+  background: none;
+}
