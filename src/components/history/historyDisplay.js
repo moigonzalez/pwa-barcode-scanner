@@ -4,25 +4,41 @@ import { Link } from 'react-router-dom';
 import HistoryHandler from './historyHandler';
 
 import ArrowRight from 'react-feather/dist/icons/arrow-right';
+import Trash2 from 'react-feather/dist/icons/trash-2';
 
 import styles from './historyDisplay.css';
 
 class HistoryDisplay extends Component {
+
+  state = {
+    products: HistoryHandler.getProducts()
+  };
+
+  deleteProduct = (id) => {
+    this.setState({
+      products: HistoryHandler.deleteProduct(id)
+    });
+  }
+
   render() {
-    const  products = HistoryHandler.getProducts();
     return (
       <div className="history__list">
-        {products === null ?
+        {this.state.products === null ?
           <div className="history__emptyState">
             <h2 className="history__emptyState__title">
               Scan some products to see them here! 🥚
             </h2>
           </div>
           :
-          products.map((x, i) => {
+          this.state.products.map((x, i) => {
           const { thumb, name, score } = JSON.parse(x.data);
           return (
           <div key={i} className="history__listItem">
+            <div className="history__delete">
+              <button className="history__deleteBtn" onClick={() => this.deleteProduct(x.code)}>
+                <Trash2 size={20} />
+              </button>
+            </div>
             <div className="history__thumbWrapper">
               {thumb ?
                 <img src={thumb} className="history__thumb" alt={`${name} thumb image`}/>

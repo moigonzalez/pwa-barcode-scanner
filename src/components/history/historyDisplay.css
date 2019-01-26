@@ -59,3 +59,13 @@
 .history__emptyState__title {
   font-size: 24px;
 }
+
+
+.history__delete {
+  display: flex;
+}
+
+.history__deleteBtn {
+  border: none;
+  background: none;
+}
