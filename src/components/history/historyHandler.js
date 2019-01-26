@@ -37,6 +37,22 @@ class HistoryHandler {
         .split(',')
         .map(x => ({code: x, data: this.getProduct(x)}));
   }
+
+  static deleteProduct(id) {
+    localStorage.setItem('products',
+      this.getProductsId()
+        .split(',')
+        .filter(x => x !== id)
+    );
+
+    if (this.getProductsId() === '') {
+      localStorage.removeItem('products');
+    }
+
+    localStorage.removeItem(id);
+
+    return this.getProducts();
+  }
 }
 
 export default HistoryHandler;
