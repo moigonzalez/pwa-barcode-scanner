@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/97e2ce4d-44a6-41c7-9382-7c5ad0196547/deploy-status)](https://app.netlify.com/sites/stoic-easley-8962cb/deploys)
+
 # PWA Barcode Scanner 🛒
 
 Scan product's barcode and get its nutritional values 🍎
