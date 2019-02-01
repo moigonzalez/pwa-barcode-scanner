@@ -7,7 +7,7 @@ import App from './components/App';
 import css from './global.css';
 import skeletons from './skeletons.css';
 
-ReactDOM.render(
+ReactDOM.hydrate(
   <BrowserRouter>
     <App />
   </BrowserRouter>, document.getElementById('root'));
