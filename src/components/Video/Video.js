@@ -14,7 +14,8 @@ class Video extends Component {
     this.state = {
       videoInit: false,
       videoError: false,
-      attempts: 0
+      attempts: 0,
+      currentCode: null
     }
 
     this.videoRef = React.createRef();
@@ -28,19 +29,25 @@ class Video extends Component {
       attempts: attempts
     })
 
-    if (status === 1 || this.state.attempts > 3) {
-      this.onProductFound(code);
+    if (status === 1) {
+      this.setState({
+        attempts: 0,
+        currentCode: code
+      });
+      Quagga.onDetected(this.onDetected);
+      this.props.onProductFound(res.product);
+    } else if (this.state.attempts > 3) {
+      Quagga.stop();
+      this.props.history.push(`/product/${code}`);
     } else {
       Quagga.onDetected(this.onDetected);
     }
   }
 
-  onProductFound = (code) => {
-    Quagga.stop();
-    this.props.history.push(`/product/${code}`);
-  }
-
   onDetected = (result) => {
+    if (this.state.currentCode === result.codeResult.code) {
+      return;
+    }
     Quagga.offDetected(this.onDetected);
     fetch(`https://world.openfoodfacts.org/api/v0/product/${result.codeResult.code}.json`)
       .then(res => res.json())
@@ -65,6 +72,7 @@ class Video extends Component {
           target: document.querySelector('#video')
         },
         numOfWorkers: 1,
+        frequency: 4,
         locate: true,
         decoder : {
           readers : ['ean_reader', 'ean_8_reader', 'upc_reader', 'code_128_reader']
@@ -85,9 +93,6 @@ class Video extends Component {
   render() {
     return (
       <div>
-        <div className="video__explanation">
-          <p>Scan product's barcode and get its nutritional values 🍎</p>
-        </div>
         <div className="video__container">
           {this.state.videoError ?
             <VideoSkeleton error={true}/>

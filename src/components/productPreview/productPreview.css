@@ -1,0 +1,14 @@
+.productPreview__box {
+  position: absolute;
+  display: flex;
+  top: calc(100% - 80px);
+  border-radius: 4px;
+  background-color: white;
+  transform: translateY(0);
+  transition: transform 0.8s ease-in-out;
+  width: 100%;
+}
+
+.productPreview__box.active {
+  transform: translateY(-100%);
+}

@@ -4,6 +4,8 @@ import dataHandler from '../dataHandler';
 import Camera from 'react-feather/dist/icons/camera';
 import ArrowDown from 'react-feather/dist/icons/arrow-down';
 
+import ProductPreview from '../productPreview';
+
 const Video = lazy(() => import('../Video'));
 
 import css from './cameraHandler.css';
@@ -15,7 +17,8 @@ class CameraHandler extends Component {
 
     this.state = {
       isCameraSupported: false,
-      isCamEnabled: dataHandler.isCameraPermissionGranted()
+      isCamEnabled: dataHandler.isCameraPermissionGranted(),
+      productPreview: null
     };
   }
 
@@ -24,6 +27,13 @@ class CameraHandler extends Component {
     this.setState({
       isCamEnabled: true
     });
+  }
+
+  onProductFound = (product) => {
+    console.log('sending new product');
+    this.setState({
+      productPreview: product
+    })
   }
 
   componentWillMount() {
@@ -39,9 +49,12 @@ class CameraHandler extends Component {
       <>
         {this.state.isCameraSupported ?
           this.state.isCamEnabled ?
-          <Suspense fallback={<div>Loading...</div>}>
-            <Video />
-          </Suspense>
+          <>
+            <Suspense fallback={<div>Loading...</div>}>
+              <Video onProductFound={this.onProductFound}/>
+            </Suspense>
+            <ProductPreview product={this.state.productPreview} />
+          </>
           :
           <div className="cameraHandler__message">Enable your camera with the button below
           <br/>
