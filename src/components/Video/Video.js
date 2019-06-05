@@ -1,51 +1,49 @@
-import React, { Component } from 'react';
-import { withRouter } from 'react-router';
+import React, { Component } from "react";
+import { withRouter } from "react-router";
 
-import Quagga from 'quagga';
-import VideoSkeleton from './Video.skeleton';
+import Quagga from "quagga";
+import VideoSkeleton from "./Video.skeleton";
 
-import styles from './video.css';
+import styles from "./video.css";
 
 class Video extends Component {
-
   constructor(props) {
     super(props);
 
     this.state = {
       videoInit: false,
       videoError: false,
-      attempts: 0
-    }
+      detected: {}
+    };
 
     this.videoRef = React.createRef();
   }
 
-  onInfoFetched = (res) => {
-    const { status, code } = res;
-    const attempts = this.state.attempts + 1;
-
-    this.setState({
-      attempts: attempts
-    })
-
-    if (status === 1 || this.state.attempts > 3) {
-      this.onProductFound(code);
-    } else {
-      Quagga.onDetected(this.onDetected);
-    }
-  }
-
-  onProductFound = (code) => {
+  onProductFound = code => {
     Quagga.stop();
     this.props.history.push(`/product/${code}`);
-  }
+  };
 
-  onDetected = (result) => {
-    Quagga.offDetected(this.onDetected);
-    fetch(`https://world.openfoodfacts.org/api/v0/product/${result.codeResult.code}.json`)
-      .then(res => res.json())
-      .then(res => this.onInfoFetched(res));
-  }
+  onDetected = result => {
+    this.setState(prevState => ({
+      detected: {
+        ...prevState.detected,
+        [result]: (prevState.detected[result] || 0) + 1
+      }
+    }));
+
+    if (this.state.detected[result] > 2) {
+      this.setState({ detected: {} });
+      Quagga.offDetected(this.onDetected);
+      fetch(
+        `https://world.openfoodfacts.org/api/v0/product/${
+          result.codeResult.code
+        }.json`
+      )
+        .then(res => res.json())
+        .then(({ code }) => this.onProductFound(code));
+    }
+  };
 
   onInitSuccess() {
     Quagga.start();
@@ -56,20 +54,26 @@ class Video extends Component {
   }
 
   componentDidMount() {
-    if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-
-      Quagga.init({
-        inputStream : {
-          name : "Live",
-          type : "LiveStream",
-          target: document.querySelector('#video')
+    if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+      Quagga.init(
+        {
+          inputStream: {
+            name: "Live",
+            type: "LiveStream",
+            target: document.querySelector("#video")
+          },
+          numOfWorkers: 1,
+          locate: true,
+          decoder: {
+            readers: [
+              "ean_reader",
+              "ean_8_reader",
+              "upc_reader",
+              "code_128_reader"
+            ]
+          }
         },
-        numOfWorkers: 1,
-        locate: true,
-        decoder : {
-          readers : ['ean_reader', 'ean_8_reader', 'upc_reader', 'code_128_reader']
-        }
-      }, (err) => {
+        err => {
           if (err) {
             this.setState({
               videoError: true
@@ -77,7 +81,8 @@ class Video extends Component {
             return;
           }
           this.onInitSuccess();
-      });
+        }
+      );
       Quagga.onDetected(this.onDetected);
     }
   }
@@ -89,17 +94,17 @@ class Video extends Component {
           <p>Scan product's barcode and get its nutritional values 🍎</p>
         </div>
         <div className="video__container">
-          {this.state.videoError ?
-            <VideoSkeleton error={true}/>
-            :
+          {this.state.videoError ? (
+            <VideoSkeleton error={true} />
+          ) : (
             <div>
-              <div className="video" id="video"></div>
-              {this.state.videoInit ? '' : <VideoSkeleton />}
+              <div className="video" id="video" />
+              {this.state.videoInit ? "" : <VideoSkeleton />}
             </div>
-          }
+          )}
         </div>
       </div>
-      );
+    );
   }
 }
 
