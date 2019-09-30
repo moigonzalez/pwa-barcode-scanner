@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import ProductDataDisplay from './ProductDataDisplay';
 import { Link } from 'react-router-dom';
+import ProductDataDisplay from './ProductDataDisplay';
 
 import ProductDisplaySkeleton from './productDisplay.skeleton';
 
@@ -33,13 +33,13 @@ class ProductDisplay extends Component {
     if (this.state.isLoading) {
       return (<ProductDisplaySkeleton />);
     }
-    else {
+    
       return (
         <>
           <ProductDataDisplay data={this.state.productInfo}/>
         </>
       );
-    }
+    
   }
 }
 

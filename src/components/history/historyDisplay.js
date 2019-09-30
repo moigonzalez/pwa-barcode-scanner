@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-import HistoryHandler from './historyHandler';
 
 import ArrowRight from 'react-feather/dist/icons/arrow-right';
 import Trash2 from 'react-feather/dist/icons/trash-2';
+import HistoryHandler from './historyHandler';
 
 import styles from './historyDisplay.css';
 

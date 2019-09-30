@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
+import Quagga from 'quagga';
+
 import { withRouter } from 'react-router';
 
-import Quagga from 'quagga';
+import BarcodeInputField from '../barcodeInputField';
+
 import VideoSkeleton from './Video.skeleton';
 
 import './video.css';
@@ -18,41 +21,6 @@ class Video extends Component {
     }
 
     this.videoRef = React.createRef();
-  }
-
-  onInfoFetched = (res) => {
-    const { status, code } = res;
-    const attempts = this.state.attempts + 1;
-
-    this.setState({
-      attempts: attempts
-    })
-
-    if (status === 1 || this.state.attempts > 3) {
-      this.onProductFound(code);
-    } else {
-      Quagga.onDetected(this.onDetected);
-    }
-  }
-
-  onProductFound = (code) => {
-    Quagga.stop();
-    this.props.history.push(`/product/${code}`);
-  }
-
-  onDetected = (result) => {
-    Quagga.offDetected(this.onDetected);
-    fetch(`https://world.openfoodfacts.org/api/v0/product/${result.codeResult.code}.json`)
-      .then(res => res.json())
-      .then(res => this.onInfoFetched(res));
-  }
-
-  onInitSuccess() {
-    Quagga.start();
-
-    this.setState({
-      videoInit: true
-    });
   }
 
   componentDidMount() {
@@ -82,18 +50,59 @@ class Video extends Component {
     }
   }
 
+  onDetected = (result) => {
+    Quagga.offDetected(this.onDetected);
+    fetch(`https://world.openfoodfacts.org/api/v0/product/${result.codeResult.code}.json`)
+      .then(res => res.json())
+      .then(res => this.onInfoFetched(res));
+  }
+
+  onProductFound = (code) => {
+    Quagga.stop();
+    this.props.history.push(`/product/${code}`);
+  }
+
+  onInfoFetched = (res) => {
+    const { status, code } = res;
+    const attempts = this.state.attempts + 1;
+
+    this.setState({
+      attempts
+    })
+
+    if (status === 1 || this.state.attempts > 3) {
+      this.onProductFound(code);
+    } else {
+      Quagga.onDetected(this.onDetected);
+    }
+  }
+
+  onInitSuccess() {
+    Quagga.start();
+
+    this.setState({
+      videoInit: true
+    });
+  }
+
   render() {
     return (
       <div>
         <div className="video__explanation">
-          <p>Scan a product's barcode and get its nutritional values 🍎</p>
+          <p>Scan a product&apos;s barcode and get its nutritional values <span role="img" aria-label="apple">🍎</span></p>
         </div>
         <div className="video__container">
           {this.state.videoError ?
-            <VideoSkeleton error={true}/>
+            <div className="skeleton__unsopported">
+              <div>
+                <p>Your device does not support camera access or something went wrong <span role="img" aria-label="thinking-face">🤔</span></p>
+                <p>You can manually enter the barcode below</p>
+                <BarcodeInputField />
+              </div>
+            </div>
             :
             <div>
-              <div className="video" id="video"></div>
+              <div className="video" id="video" />
               {this.state.videoInit ? '' : <VideoSkeleton />}
             </div>
           }

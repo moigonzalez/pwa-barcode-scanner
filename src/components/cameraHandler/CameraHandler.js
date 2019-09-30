@@ -1,12 +1,14 @@
 import React, { lazy, Component, Suspense } from 'react';
-import dataHandler from '../dataHandler';
 
 import Camera from 'react-feather/dist/icons/camera';
 import ArrowDown from 'react-feather/dist/icons/arrow-down';
+import dataHandler from '../dataHandler';
 
-const Video = lazy(() => import('../Video'));
+import BarcodeInputField from '../barcodeInputField';
 
 import './cameraHandler.css';
+
+const Video = lazy(() => import('../Video'));
 
 class CameraHandler extends Component {
 
@@ -48,7 +50,7 @@ class CameraHandler extends Component {
           <div className="cameraHandler__messageIcon"><ArrowDown size={35}/></div>
           </div>
           :
-          <div>Camera is not supported 😢</div>
+          <BarcodeInputField />
         }
         {this.state.isCamEnabled ?
           ''
