@@ -15,10 +15,6 @@ class ProductDataFilter {
     return this.d[value] === undefined;
   }
 
-  isEmpty() {
-    return Object.keys(this.d[value]).length === 0;
-  }
-
   isPlantBased() {
     if (this.isUndefined('categories_tags')) {
       return undefined;

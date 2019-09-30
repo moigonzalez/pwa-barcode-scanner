@@ -1,28 +1,22 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import AddProductInfo from '../addProductInfo';
 
 import BarcodeInputField from '../barcodeInputField';
 
 import './productNotFound.css';
 
-class ProductNotFound extends Component {
+const ProductNotFound = (props) => {
+  const { location } = props;
 
-  constructor(props) {
-    super(props);
+  const [ code ] = useState(new URLSearchParams(location.search).get('code'));
 
-    this.code = new URLSearchParams(this.props.location.search).get('code');
-  }
-
-  render() {
-    return (
-    <div className="productNotFound__container">
-      <h2 className="productDisplay__title not-found">Product not found 😢</h2>
-      <p>The barcode: {this.code} gave no results!</p>
+    return (<div className="productNotFound__container">
+      <h2 className="productDisplay__title not-found">Product not found <span role="img" aria-label="crying emoji">😢</span></h2>
+      <p>The barcode: {code} gave no results!</p>
       <p>You can also enter the barcode below and try again:</p>
       <BarcodeInputField />
       <AddProductInfo />
     </div>)
-  }
 };
 
 export default ProductNotFound;

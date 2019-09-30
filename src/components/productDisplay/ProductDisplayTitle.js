@@ -4,7 +4,7 @@ const ProductDisplayTitle = ({productName, code, thumb}) => (
   <div className="productDisplay__titleContainer">
     <div className="productDisplay__thumbContainer">
       {thumb ?
-        <img src={thumb} alt="Product front image" />
+        <img src={thumb} alt="Product front" />
         :
         <div className="skeleton__image">
           Picture not found

@@ -10,7 +10,7 @@ const NutrientLevels = (product) => (
         <span className={`productDisplay__list--value ${x.value}`}>{x.value}</span>
       </div>)
       :
-      <div className="produtList__unknown">Unknown ❓</div>
+      <div className="produtList__unknown">Unknown <span role="img" aria-label="question emoji">❓</span></div>
     }
   </section>
 );

@@ -21,19 +21,19 @@ class CameraHandler extends Component {
     };
   }
 
-  onCamEnabled = () => {
-    dataHandler.cameraPermissionGranted();
-    this.setState({
-      isCamEnabled: true
-    });
-  }
-
   componentWillMount() {
     if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
       this.setState({
         isCameraSupported: true
       });
     }
+  }
+
+  onCamEnabled = () => {
+    dataHandler.cameraPermissionGranted();
+    this.setState({
+      isCamEnabled: true
+    });
   }
 
   render() {
@@ -55,7 +55,7 @@ class CameraHandler extends Component {
         {this.state.isCamEnabled ?
           ''
           :
-          <button aria-label="Enable Camera" className="btn__round camera__enable" onClick={this.onCamEnabled}>
+          <button type="button" aria-label="Enable Camera" className="btn__round camera__enable" onClick={this.onCamEnabled}>
             <Camera />
           </button>
         }

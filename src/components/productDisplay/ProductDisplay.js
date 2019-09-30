@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import ProductDataDisplay from './ProductDataDisplay';
 
 import ProductDisplaySkeleton from './productDisplay.skeleton';
@@ -16,6 +15,12 @@ class ProductDisplay extends Component {
     }
   }
 
+  componentWillMount() {
+    fetch(`https://world.openfoodfacts.org/api/v0/product/${this.props.match.params.id}.json`)
+    .then(res => res.json())
+    .then(res => this.onInfoFetched(res));
+  }
+
   onInfoFetched(result) {
     this.setState({
       isLoading: false,
@@ -23,23 +28,17 @@ class ProductDisplay extends Component {
     })
   }
 
-  componentWillMount() {
-    fetch(`https://world.openfoodfacts.org/api/v0/product/${this.props.match.params.id}.json`)
-    .then(res => res.json())
-    .then(res => this.onInfoFetched(res));
-  }
-
   render() {
     if (this.state.isLoading) {
       return (<ProductDisplaySkeleton />);
     }
-    
+
       return (
         <>
           <ProductDataDisplay data={this.state.productInfo}/>
         </>
       );
-    
+
   }
 }
 
