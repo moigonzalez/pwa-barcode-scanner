@@ -6,7 +6,7 @@ import ArrowDown from 'react-feather/dist/icons/arrow-down';
 
 const Video = lazy(() => import('../Video'));
 
-import css from './cameraHandler.css';
+import './cameraHandler.css';
 
 class CameraHandler extends Component {
 

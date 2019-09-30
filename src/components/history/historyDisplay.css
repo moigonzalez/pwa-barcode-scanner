@@ -68,4 +68,5 @@
 .history__deleteBtn {
   border: none;
   background: none;
+  cursor: pointer;
 }

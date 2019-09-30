@@ -4,7 +4,7 @@ import { withRouter } from 'react-router';
 import Quagga from 'quagga';
 import VideoSkeleton from './Video.skeleton';
 
-import styles from './video.css';
+import './video.css';
 
 class Video extends Component {
 
@@ -86,7 +86,7 @@ class Video extends Component {
     return (
       <div>
         <div className="video__explanation">
-          <p>Scan product's barcode and get its nutritional values 🍎</p>
+          <p>Scan a product's barcode and get its nutritional values 🍎</p>
         </div>
         <div className="video__container">
           {this.state.videoError ?

@@ -4,7 +4,7 @@ import AddProductInfo from '../addProductInfo';
 import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router';
 
-import styles from './productNotFound.css';
+import './productNotFound.css';
 
 class ProductNotFound extends Component {
 

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import styles from './nutriScore.css';
+import './nutriScore.css';
 
 const NutriScore = (props) => (
   <div className="nutriscore__container">

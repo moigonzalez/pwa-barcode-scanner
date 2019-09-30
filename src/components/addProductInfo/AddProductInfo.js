@@ -1,6 +1,6 @@
 import React from 'react';
 
-import styles from './addProductInfo.css';
+import './addProductInfo.css';
 
 const AddProductInfo = (status) => (
   <div className="off_disclaimer">

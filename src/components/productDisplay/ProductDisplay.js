@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import ProductDataDisplay from './ProductDataDisplay';
 import { Link } from 'react-router-dom';
 
-import styles from './productDisplay.css';
 import ProductDisplaySkeleton from './productDisplay.skeleton';
+
+import './productDisplay.css';
 
 class ProductDisplay extends Component {
   constructor(...props) {
