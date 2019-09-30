@@ -37,5 +37,8 @@
 .skeleton__unsopported {
   text-align: center;
   height: 100%;
-  
+}
+
+.skeleton__unsopported video {
+  display: none;
 }

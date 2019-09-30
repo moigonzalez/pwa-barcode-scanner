@@ -18,3 +18,10 @@
   font-size: 40px;
   padding-top: 15px;
 }
+
+.cameraHandler__unsopported {
+  display: flex;
+  height: 250px;
+  align-items: center;
+  text-align: center;
+}

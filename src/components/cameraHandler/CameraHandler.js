@@ -50,7 +50,13 @@ class CameraHandler extends Component {
           <div className="cameraHandler__messageIcon"><ArrowDown size={35}/></div>
           </div>
           :
-          <BarcodeInputField />
+          <div className="cameraHandler__unsopported">
+            <div>
+              <p>Your device does not support camera access or something went wrong <span role="img" aria-label="thinking-face">🤔</span></p>
+              <p>You can enter the barcode below</p>
+              <BarcodeInputField />
+            </div>
+          </div>
         }
         {this.state.isCamEnabled ?
           ''
