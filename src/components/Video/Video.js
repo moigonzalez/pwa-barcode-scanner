@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import Quagga from 'quagga';
 
 import { withRouter } from 'react-router';
@@ -9,23 +9,48 @@ import VideoSkeleton from './Video.skeleton';
 
 import './video.css';
 
-class Video extends Component {
+const Video = ({ history }) => {
+  const [ videoInit, setVideoInit ] = useState(false);
+  const [ videoError, setVideoError ] = useState(false);
+  const [ attempts, setAttempts ] = useState(0);
+  const [ barcode, setBarcode ] = useState(null);
 
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      videoInit: false,
-      videoError: false,
-      attempts: 0
+  const onProductFound = (code) => {
+    Quagga.stop();
+    if (code === 'not-found') {
+      history.push(`/product/${code}?code=${barcode}`);
+    } else {
+      history.push(`/product/${code}`);
     }
-
-    this.videoRef = React.createRef();
   }
 
-  componentDidMount() {
-    if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+  const onInitSuccess = () => {
+    Quagga.start();
+    setVideoInit(true);
+  }
 
+  const onDetected = (result) => {
+    Quagga.offDetected(onDetected);
+    fetch(`https://world.openfoodfacts.org/api/v0/product/${result.codeResult.code}.json`)
+      .then(res => res.json())
+      // eslint-disable-next-line no-use-before-define
+      .then(res => onInfoFetched(res));
+  }
+
+  const onInfoFetched = (res) => {
+    const { status, code } = res;
+    setBarcode(code);
+    setAttempts(prevState => prevState + 1);
+
+    if (status === 1) {
+      onProductFound(code);
+    } else {
+      Quagga.onDetected(onDetected);
+    }
+  }
+
+  useEffect(() => {
+    if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
       Quagga.init({
         inputStream : {
           name : "Live",
@@ -39,79 +64,44 @@ class Video extends Component {
         }
       }, (err) => {
           if (err) {
-            this.setState({
-              videoError: true
-            });
+            setVideoError(true);
             return;
           }
-          this.onInitSuccess();
+          onInitSuccess();
       });
-      Quagga.onDetected(this.onDetected);
+      Quagga.onDetected(onDetected);
     }
-  }
+  }, []);
 
-  onDetected = (result) => {
-    Quagga.offDetected(this.onDetected);
-    fetch(`https://world.openfoodfacts.org/api/v0/product/${result.codeResult.code}.json`)
-      .then(res => res.json())
-      .then(res => this.onInfoFetched(res));
-  }
+  useEffect(() => {
+    if (attempts > 3) {
+      onProductFound('not-found');
+    }
+  }, [attempts]);
 
-  onProductFound = (code) => {
-    const { history } = this.props;
-    Quagga.stop();
-    history.push(`/product/${code}`);
-  }
-
-  onInfoFetched = (res) => {
-    const { status, code } = res;
-    const attempts = this.state.attempts + 1;
-
-    this.setState({
-      attempts
-    }, () => {
-      if (status === 1 || this.state.attempts > 3) {
-        this.onProductFound(code);
-      } else {
-        Quagga.onDetected(this.onDetected);
-      }
-    });
-  }
-
-  onInitSuccess() {
-    Quagga.start();
-
-    this.setState({
-      videoInit: true
-    });
-  }
-
-  render() {
-    const { videoError, videoInit } = this.state;
-    return (
-      <div>
-        <div className="video__explanation">
-          <p>Scan a product&apos;s barcode and get its nutritional values <span role="img" aria-label="apple">🍎</span></p>
-        </div>
-        <div className="video__container">
-          {videoError ?
-            <div className="skeleton__unsopported">
-              <div>
-                <p>Your device does not support camera access or something went wrong <span role="img" aria-label="thinking-face">🤔</span></p>
-                <p>You can enter the barcode below</p>
-                <BarcodeInputField />
-              </div>
-            </div>
-            :
-            <div>
-              <div className="video" id="video" />
-              {videoInit ? '' : <VideoSkeleton />}
-            </div>
-          }
-        </div>
+  return (
+    <div>
+      <div className="video__explanation">
+        <p>Scan a product&apos;s barcode and get its nutritional values <span role="img" aria-label="apple">🍎</span></p>
       </div>
-      );
-  }
+      <div className="video__container">
+        {videoError ?
+          <div className="skeleton__unsopported">
+            <div>
+              <p>Your device does not support camera access or something went wrong <span role="img" aria-label="thinking-face">🤔</span></p>
+              <p>You can enter the barcode below</p>
+              <BarcodeInputField />
+            </div>
+          </div>
+          :
+          <div>
+            <div className="video" id="video" />
+            {videoInit ? '' : <VideoSkeleton />}
+          </div>
+        }
+      </div>
+    </div>
+    );
 }
 
 export default withRouter(Video);
