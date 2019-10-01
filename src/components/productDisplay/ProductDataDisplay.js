@@ -13,7 +13,6 @@ import NutriScore from '../nutriScore';
 
 const ProductDataDisplay = (data) => {
   const { code, status, product } = data.data;
-  let p;
 
   if (status !== 1) {
     return <Redirect
@@ -24,7 +23,7 @@ const ProductDataDisplay = (data) => {
             />;
   }
 
-  p = new ProductDataFilter(product);
+  const p = new ProductDataFilter(product);
 
   HistoryHandler.addProduct(code, p.productDataThumbView());
 
