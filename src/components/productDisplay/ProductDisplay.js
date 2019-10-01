@@ -1,45 +1,32 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import ProductDataDisplay from './ProductDataDisplay';
 
 import ProductDisplaySkeleton from './productDisplay.skeleton';
 
 import './productDisplay.css';
 
-class ProductDisplay extends Component {
-  constructor(...props) {
-    super(...props);
+const ProductDisplay = (props) => {
 
-    this.state = {
-      isLoading: true,
-      productInfo: null
-    }
+  const [ isLoading, setIsLoading ] = useState(true);
+  const [ productInfo, setProductInfo ] = useState(null);
+
+  const onInfoFetched = (result) => {
+    setProductInfo(result);
+    setIsLoading(false);
   }
 
-  componentWillMount() {
-    fetch(`https://world.openfoodfacts.org/api/v0/product/${this.props.match.params.id}.json`)
-    .then(res => res.json())
-    .then(res => this.onInfoFetched(res));
-  }
+  useEffect(() => {
+    fetch(`https://world.openfoodfacts.org/api/v0/product/${props.match.params.id}.json`)
+      .then(res => res.json())
+      .then(res => onInfoFetched(res));
+  }, []);
 
-  onInfoFetched(result) {
-    this.setState({
-      isLoading: false,
-      productInfo: result
-    })
-  }
-
-  render() {
-    if (this.state.isLoading) {
-      return (<ProductDisplaySkeleton />);
-    }
-
-      return (
-        <>
-          <ProductDataDisplay data={this.state.productInfo}/>
-        </>
-      );
-
-  }
-}
+  return (
+    <>
+    {isLoading ? <ProductDisplaySkeleton /> : ""}
+    {productInfo !== null ? <ProductDataDisplay data={productInfo}/> : ""}
+    </>
+  );
+};
 
 export default ProductDisplay;
