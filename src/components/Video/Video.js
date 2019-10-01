@@ -58,8 +58,9 @@ class Video extends Component {
   }
 
   onProductFound = (code) => {
+    const { history } = this.props;
     Quagga.stop();
-    this.props.history.push(`/product/${code}`);
+    history.push(`/product/${code}`);
   }
 
   onInfoFetched = (res) => {
@@ -68,13 +69,13 @@ class Video extends Component {
 
     this.setState({
       attempts
-    })
-
-    if (status === 1 || this.state.attempts > 3) {
-      this.onProductFound(code);
-    } else {
-      Quagga.onDetected(this.onDetected);
-    }
+    }, () => {
+      if (status === 1 || this.state.attempts > 3) {
+        this.onProductFound(code);
+      } else {
+        Quagga.onDetected(this.onDetected);
+      }
+    });
   }
 
   onInitSuccess() {
@@ -86,13 +87,14 @@ class Video extends Component {
   }
 
   render() {
+    const { videoError, videoInit } = this.state;
     return (
       <div>
         <div className="video__explanation">
           <p>Scan a product&apos;s barcode and get its nutritional values <span role="img" aria-label="apple">🍎</span></p>
         </div>
         <div className="video__container">
-          {this.state.videoError ?
+          {videoError ?
             <div className="skeleton__unsopported">
               <div>
                 <p>Your device does not support camera access or something went wrong <span role="img" aria-label="thinking-face">🤔</span></p>
@@ -103,7 +105,7 @@ class Video extends Component {
             :
             <div>
               <div className="video" id="video" />
-              {this.state.videoInit ? '' : <VideoSkeleton />}
+              {videoInit ? '' : <VideoSkeleton />}
             </div>
           }
         </div>
