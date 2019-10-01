@@ -22,7 +22,7 @@ const Additives = (product) => {
 
   return (<section className="productDisplay__section">
     <h3 className="productDisplay__sectionTitle">Additives</h3>
-    {displayAdditives()};
+    {displayAdditives()}
   </section>);
 };
 
