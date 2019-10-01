@@ -3,10 +3,10 @@ import React from 'react';
 const Additives = (product) => {
   const displayAdditives = () => {
       if (product.product.additives() === undefined) {
-        return <div>Unknown <span role="img" aria-label="question mark">❓</span></div>;
+        return <div>Unknown <span role="img" aria-label="question mark">❓</span></div>
       }
       if (product.product.additives().length === 0) {
-        return <div>None</div>;
+        return <div>None</div>
       }
       return product.product.additives().map((x, i, arr) =>
         <span key={x} className="productDisplay__additive">
