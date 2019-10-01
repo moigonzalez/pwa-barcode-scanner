@@ -43,19 +43,14 @@ class ProductDataFilter {
   }
 
   nutrientLevels() {
-    const res = [];
-
     if (this.isUndefined('nutrient_levels')) {
       return undefined;
     }
 
-    for (const key in this.d.nutrient_levels) {
-      res.push({
-        title: key.replace('-', ' '),
-        value:this.d.nutrient_levels[key]
-      });
-    }
-    return res;
+    return Object.keys(this.d.nutrient_levels).map(k => ({
+      title: k.replace('-', ' '),
+      value: this.d.nutrient_levels[k]
+    }))
   }
 
   containsPalmOil() {
