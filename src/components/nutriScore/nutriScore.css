@@ -1,9 +1,8 @@
 
 .nutriscore__detail {
   display: block;
-  max-width: 150px;
+  max-width: 100px;
   margin: 0 auto;
-  padding-top: 10px;
 }
 
 .nutriscore__history {

@@ -78,3 +78,9 @@
 .productDisplay__list--value.low {
   color: #3cb371;
 }
+
+.productDisplay__scores {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
