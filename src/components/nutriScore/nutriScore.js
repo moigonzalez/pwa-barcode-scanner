@@ -4,13 +4,16 @@ import './nutriScore.css';
 
 const NutriScore = (props) => {
   const { score, extraClass } = props;
-  return (<div className="nutriscore__container">
+  return (<>
     {score !== undefined ?
-      <img className={`${extraClass} nutriscore__image`} alt={`Nutrition score ${score}`} src={`https://static.openfoodfacts.org/images/misc/nutriscore-${score}.svg`} />
+      <div className="nutriscore__container">
+        <img className={`${extraClass} nutriscore__image`} alt={`Nutrition score ${score}`} src={`https://static.openfoodfacts.org/images/misc/nutriscore-${score}.svg`} />
+      </div>
       :
       ''
     }
-  </div>);
+    </>
+  );
 };
 
 export default NutriScore;
