@@ -18,10 +18,16 @@ Scan product's barcode and get its nutritional values 🍎
 
 <img src="demo/screenshots.jpg" height="300px" />
 
+# Clone the Repository
+
+```bash
+git clone https://github.com/moigonzalez/pwa-barcode-scanner.git
+```
+
 # Installation
 
 ```bash
-npm run install
+npm install
 ```
 
 # Development
