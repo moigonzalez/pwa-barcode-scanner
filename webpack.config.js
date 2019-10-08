@@ -62,7 +62,8 @@ module.exports = {
       { from: './public/manifest.json', to: './'},
       { from: './public/favicon.ico', to: './'},
       { from: './public/icons/*', to: './icons', flatten: true },
-      { from: './public/.well-known/*', to: './.well-known', flatten: true }],
+      { from: './public/.well-known/*', to: './.well-known', flatten: true },
+      { from: './public/_redirects', to: './', flatten: true }],
     ),
     new InjectManifest({
       swSrc: './src/service-worker.js',
