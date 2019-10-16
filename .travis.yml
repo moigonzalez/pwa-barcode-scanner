@@ -22,6 +22,7 @@ cache:
 defaults: &defaults
   script:
     #   ## print all Travis environment variables for debugging
+    - print $DEPLOY_URL
     - npm run cypress:run -- --parallel --group $STAGE_NAME
     # after all tests finish running we need
     # to kill all background jobs (like "npm start &")
