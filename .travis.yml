@@ -22,12 +22,9 @@ cache:
 defaults: &defaults
   script:
     #   ## print all Travis environment variables for debugging
-    - echo $DEPLOY_URL
+    - echo "Triggering Travis build against deployed url $DEPLOY_URL"
     - echo $NETLIFY_DEPLOY_URL
     - npm run cypress:run
-    # after all tests finish running we need
-    # to kill all background jobs (like "npm start &")
-    - kill $(jobs -p) || true
 
 jobs:
   include:
