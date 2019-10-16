@@ -8,7 +8,8 @@
     "build": "rm -rf ./dist/* && webpack --mode production",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "./node_modules/.bin/eslint . --fix",
-    "cypress:open": "node_modules/.bin/cypress open"
+    "cypress:open": "node_modules/.bin/cypress open",
+    "cypress:run": "node_modules/.bin/cypress run"
   },
   "repository": {
     "type": "git",

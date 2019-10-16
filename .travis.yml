@@ -1,0 +1,38 @@
+language: node_js
+
+node_js:
+  # Node 10.3+ includes npm@6 which has good "npm ci" command
+  - 10.8
+
+# if using Ubuntu 16 need this library
+# https://github.com/cypress-io/cypress-documentation/pull/1647
+addons:
+  apt:
+    packages:
+    - libgconf-2-4
+
+cache:
+  # cache both npm modules and Cypress binary
+  directories:
+    - ~/.npm
+    - ~/.cache
+  override:
+    - npm ci
+
+defaults: &defaults
+  script:
+    #   ## print all Travis environment variables for debugging
+    - $(npm bin)/print-env TRAVIS
+    - npm run cypress:run -- --record --parallel --group $STAGE_NAME
+    # after all tests finish running we need
+    # to kill all background jobs (like "npm start &")
+    - kill $(jobs -p) || true
+
+jobs:
+  include:
+    # we have multiple jobs to execute using just a single stage
+    # but we can pass group name via environment variable to Cypress test runner
+    - stage: test
+      env:
+        - STAGE_NAME="1x-electron on Travis CI"
+      <<: *defaults
