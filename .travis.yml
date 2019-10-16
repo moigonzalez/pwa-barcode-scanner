@@ -32,5 +32,6 @@ jobs:
     # but we can pass group name via environment variable to Cypress test runner
     - stage: test
       env:
+        - REQ_FILE="./env"
         - STAGE_NAME="1x-electron on Travis CI"
       <<: *defaults

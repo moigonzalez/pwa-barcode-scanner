@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "webpack-dev-server --mode development --display-error-details",
-    "build": "echo $NETLIFY_DEPLOY_URL && echo $DEPLOY_URL && rm -rf ./dist/* && webpack --mode production",
+    "build": "echo 'NETLIFY_DEPLOY_URL=$DEPLOY_URL' > env && rm -rf ./dist/* && webpack --mode production",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "./node_modules/.bin/eslint . --fix",
     "cypress:open": "node_modules/.bin/cypress open",
