@@ -22,12 +22,13 @@ defaults: &defaults
   script:
     - npm run cypress:run
 
+branches:
+  only:
+  - master
+
 jobs:
   include:
     - stage: test
       env:
         - STAGE_NAME="1x-electron on Travis CI"
       <<: *defaults
-      branches:
-        only:
-        - master
