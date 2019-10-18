@@ -5,9 +5,11 @@
   "main": "index.js",
   "scripts": {
     "dev": "webpack-dev-server --mode development --display-error-details",
-    "build": "rm -rf ./dist/* && webpack --mode production",
+    "build": "echo 'NETLIFY_DEPLOY_URL=$DEPLOY_URL' > env && rm -rf ./dist/* && webpack --mode production",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "./node_modules/.bin/eslint . --fix"
+    "lint": "./node_modules/.bin/eslint . --fix",
+    "cypress:open": "node_modules/.bin/cypress open",
+    "cypress:run": "node_modules/.bin/cypress run"
   },
   "repository": {
     "type": "git",
@@ -43,9 +45,11 @@
     "babel-loader": "^8.0.5",
     "copy-webpack-plugin": "^4.6.0",
     "css-loader": "^2.1.0",
+    "cypress": "^3.4.1",
     "eslint": "^6.5.0",
     "eslint-config-airbnb": "^18.0.1",
     "eslint-config-prettier": "^6.3.0",
+    "eslint-plugin-cypress": "^2.7.0",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-prettier": "^3.1.1",

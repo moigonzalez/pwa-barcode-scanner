@@ -1,0 +1,34 @@
+language: node_js
+
+node_js:
+  # Node 10.3+ includes npm@6 which has good "npm ci" command
+  - 10.8
+
+# if using Ubuntu 16 need this library
+# https://github.com/cypress-io/cypress-documentation/pull/1647
+addons:
+  apt:
+    packages:
+    - libgconf-2-4
+
+cache:
+  directories:
+    - ~/.npm
+    - ~/.cache
+  override:
+    - npm ci
+
+defaults: &defaults
+  script:
+    - npm run cypress:run
+
+branches:
+  only:
+  - master
+
+jobs:
+  include:
+    - stage: test
+      env:
+        - STAGE_NAME="1x-electron on Travis CI"
+      <<: *defaults

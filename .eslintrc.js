@@ -7,6 +7,7 @@ module.exports = {
     'airbnb',
     'prettier',
     "prettier/react",
+    'plugin:cypress/recommended',
   ],
   globals: {
     Atomics: 'readonly',
@@ -23,6 +24,7 @@ module.exports = {
   plugins: [
     'react',
     'prettier',
+    'cypress',
   ],
   rules: {
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
