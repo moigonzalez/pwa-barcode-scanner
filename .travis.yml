@@ -12,7 +12,6 @@ addons:
     - libgconf-2-4
 
 cache:
-  # cache both npm modules and Cypress binary
   directories:
     - ~/.npm
     - ~/.cache
@@ -21,17 +20,14 @@ cache:
 
 defaults: &defaults
   script:
-    #   ## print all Travis environment variables for debugging
-    - echo "Triggering Travis build against deployed url $DEPLOY_URL"
-    - echo $NETLIFY_DEPLOY_URL
     - npm run cypress:run
 
 jobs:
+  branches:
+    only:
+    - master
   include:
-    # we have multiple jobs to execute using just a single stage
-    # but we can pass group name via environment variable to Cypress test runner
     - stage: test
       env:
-        - REQ_FILE="./env"
         - STAGE_NAME="1x-electron on Travis CI"
       <<: *defaults
