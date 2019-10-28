@@ -1,11 +1,13 @@
 import React from 'react';
 
+import './additives.css';
+
 import ADDITIVES_DATA from "./additives.json";
 
 const Additives = (product) => {
   const setAdditives = () => {
-    if (localStorage.getItem("ADDITIVES") === null) {
-      localStorage.setItem("ADDITIVES", JSON.stringify(ADDITIVES_DATA));
+    if (localStorage.getItem('ADDITIVES') === null) {
+      localStorage.setItem('ADDITIVES', JSON.stringify(ADDITIVES_DATA));
     }
     return JSON.parse(localStorage.getItem("ADDITIVES"));
   };
@@ -24,11 +26,11 @@ const Additives = (product) => {
     }
     return (
       <>
-        <div>
-          Name: {x.name}
-        </div>
-        <div>
-          Risk: {x.risk}
+        <span className="additive__name">
+          - {x.name}
+        </span>
+        <div className="additive__risk">
+          Risk: <span className={`additive__risk--value ${x.risk.toLowerCase()}`}>{x.risk}</span>
         </div>
         <div>
           Function: {x.function}
@@ -46,13 +48,14 @@ const Additives = (product) => {
       }
       return product.product.additives().map((x) =>
         <div key={x} className="productDisplay__additive">
-          <div><b>{x}</b></div>
-          <div>{getAdditiveData(getAdditive(normalize(x)))}</div>
+          <div><b className="additive__name additive__code">{x} </b>
+            {getAdditiveData(getAdditive(normalize(x)))}
+          </div>
         </div>
     );
   }
 
-  return (<section className="productDisplay__section">
+  return (<section className="additives__section">
     <h3 className="productDisplay__sectionTitle">Additives</h3>
     {displayAdditives()}
   </section>);
