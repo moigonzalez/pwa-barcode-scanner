@@ -7,7 +7,7 @@ import ProductDataFilter from './ProductDataFilter';
 import ProductDisplayTitle from './ProductDisplayTitle';
 import NutrientLevels from './NutrientLevels';
 import DietaryData from './DietaryData';
-import Additives from './Additives';
+import Additives from './additives';
 import AddProductInfo from '../addProductInfo';
 import NutriScore from '../nutriScore';
 import NovaGroup from '../novaGroup';

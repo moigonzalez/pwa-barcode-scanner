@@ -1,0 +1,107 @@
+{
+  "E330": {
+    "name": "Citric acid",
+    "risk": "Low",
+    "function": "Antioxidant"
+  },
+  "E322": {
+    "name": "Lecithins",
+    "risk": "Low",
+    "function": "Antioxidant"
+  },
+  "E415": {
+    "name": "Xanthan gum",
+    "risk": "Low",
+    "function": "Emulsifier, Thickener"
+  },
+  "E500": {
+    "name": "Sodium carbonates",
+    "risk": "Low",
+    "function": "Stabilizer, Thickener"
+  },
+  "E471": {
+    "name": "Mono- and diglycerides of fatty acids",
+    "risk": "Low",
+    "function": "Emulsifier, Stabilizer"
+  },
+  "E412": {
+    "name": "Guar gum",
+    "risk": "Low",
+    "function": "Emulsifier, Thickener"
+  },
+  "E202": {
+    "name": "Potassium sorbate",
+    "risk": "High",
+    "function": "Preservative"
+  },
+  "E440": {
+    "name": "Pectins",
+    "risk": "Low",
+    "function": "Emulsifier, Thickener"
+  },
+  "E250": {
+    "name": "Sodium nitrite",
+    "risk": "Moderate",
+    "function": "Preservative"
+  },
+  "E407": {
+    "name": "Carrageenan",
+    "risk": "Moderate",
+    "function": "Carrier, Emulsifier, Humectant, Stabilizer, Thickener"
+  },
+  "E450": {
+    "name": "Diphosphates",
+    "risk": "Low",
+    "function": "Emulsifier, Humectant, Sequestrant, Stabilizer, Thickener"
+  },
+  "E300": {
+    "name": "Ascorbic acid",
+    "risk": "Low",
+    "function": "Antioxidant, Sequestrant"
+  },
+  "E410": {
+    "name": "Locust bean gum",
+    "risk": "Low",
+    "function": "Emulsifier, Stabilizer, Thickener"
+  },
+  "E331": {
+    "name": "Sodium citrates",
+    "risk": "Low",
+    "function": "Emulsifier, Sequestrant, Stabilizer"
+  },
+  "E270": {
+    "name": "Lactic acid",
+    "risk": "Low",
+    "function": "?"
+  },
+  "E129": {
+    "name": "Allura red ac",
+    "risk": "Low",
+    "function": "Colour"
+  },
+  "E150": {
+    "name": "Ammonia caramel",
+    "risk": "Moderate",
+    "function": "Colour"
+  },
+  "E621": {
+    "name": "Monosodium glutamate",
+    "risk": "High",
+    "function": "Flavour enhancer"
+  },
+  "E428": {
+    "name": "Gelatine",
+    "risk": "Low",
+    "function": "Ingredient"
+  },
+  "E102": {
+    "name": "Tartrazine",
+    "risk": "High",
+    "function": "Colour"
+  },
+  "E133": {
+    "name": "Brilliant blue FCF",
+    "risk": "Moderate",
+    "function": "Colour"
+  }
+}

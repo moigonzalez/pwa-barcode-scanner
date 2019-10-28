@@ -43,14 +43,6 @@
   margin-bottom: 10px;
 }
 
-.productDisplay__additive {
-  text-transform: uppercase;
-}
-
-.productDisplay__additive + .productDisplay__additive{
-  margin-left: 5px;
-}
-
 .productDisplay__list--item {
   margin-top: 10px;
 }
