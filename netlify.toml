@@ -9,7 +9,7 @@
   # set TERM variable for terminal output
   TERM = "xterm"
 
-# [[plugins]]
-#  package = "netlify-plugin-cypress"
-#  [plugins.inputs]
-#    record = true
+[[plugins]]
+  package = "netlify-plugin-cypress"
+  [plugins.inputs]
+    record = true
