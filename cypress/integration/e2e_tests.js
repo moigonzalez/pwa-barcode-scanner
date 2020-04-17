@@ -34,7 +34,6 @@ describe('Functional test of the app', () => {
   });
 
   it('Should have a history with empty state', () => {
-    cy.clearLocalStorage();
     cy.visit("https://pwascanit.com/history");
 
     cy.get('.history__list').children('.history__listItem').should('have.length', 0);

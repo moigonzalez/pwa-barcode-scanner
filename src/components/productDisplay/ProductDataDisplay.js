@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Redirect } from 'react-router-dom';
 
 import { HistoryHandler } from '../history';
@@ -12,8 +12,17 @@ import AddProductInfo from '../addProductInfo';
 import NutriScore from '../nutriScore';
 import NovaGroup from '../novaGroup';
 
-const ProductDataDisplay = (data) => {
-  const { code, status, product } = data.data;
+const ProductDataDisplay = ({ data }) => {
+  const { code, status, product } = data;
+  const [p, setP] = useState(undefined);
+
+  useEffect(() => {
+    if (status === 1) {
+      const filteredProduct = new ProductDataFilter(product);
+      setP(filteredProduct);
+      HistoryHandler.addProduct(code, filteredProduct.productDataThumbView());
+    }
+  }, []);
 
   if (status !== 1) {
     return <Redirect
@@ -24,10 +33,6 @@ const ProductDataDisplay = (data) => {
             />;
   }
 
-  const p = new ProductDataFilter(product);
-
-  HistoryHandler.addProduct(code, p.productDataThumbView());
-
   return (
     <div className="productDisplay__container">
       <ProductDisplayTitle code={code} productName={product.product_name} thumb={product.image_thumb_url}/>
@@ -35,10 +40,16 @@ const ProductDataDisplay = (data) => {
         <NutriScore score={product.nutrition_grades} extraClass="nutriscore__detail" />
         <NovaGroup group={product.nova_group} tag={product.nova_groups_tags} />
       </div>
-      <NutrientLevels product={p}/>
-      <DietaryData product={p} />
-      <Additives product={p} />
-      <AddProductInfo status={status} barcode={code} />
+      {p !== undefined ?
+        (<>
+          <NutrientLevels product={p}/>
+          <DietaryData product={p} />
+          <Additives product={p} />
+          <AddProductInfo status={status} barcode={code} />
+        </>)
+        :
+        <> </>
+      }
     </div>
     );
 };
