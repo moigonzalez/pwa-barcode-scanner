@@ -1,3 +1,8 @@
+.history__list {
+  flex: 1;
+  width: 90%;
+}
+
 .history__listItem {
   display: flex;
   position: relative;
@@ -14,7 +19,9 @@
 }
 
 .history__thumbWrapper {
+  display: flex;
   flex: 0.2;
+  align-items: center;
   text-align: center;
 }
 
@@ -39,8 +46,10 @@
 }
 
 .history__linkWrapper {
-  flex: 0.2;
   color: #333;
+  display: flex;
+  width: 100%;
+  text-decoration: none;
 }
 
 .history__arrowRight {
@@ -52,8 +61,8 @@
 
 .history__emptyState {
   text-align: center;
-  margin-top: 30%;
   padding: 0 40px;
+  margin-top: 60%;
 }
 
 .history__emptyState__title {

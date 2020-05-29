@@ -34,6 +34,7 @@ const HistoryDisplay = () => {
               <Trash2 size={20} />
             </button>
           </div>
+          <Link className="history__linkWrapper" to={`/product/${x.code}`}>
           <div className="history__thumbWrapper">
             {thumb ?
               <img src={thumb} className="history__thumb" alt={`${name} thumb`}/>
@@ -47,7 +48,6 @@ const HistoryDisplay = () => {
             <h2 className="history__title">{name}</h2>
             <div className="history__barcode">{x.code}</div>
           </div>
-          <Link className="history__linkWrapper" to={`/product/${x.code}`}>
             <ArrowRight className="history__arrowRight" size={20} />
           </Link>
         </div>)

@@ -1,7 +1,4 @@
 .camera__enable {
-  position: absolute;
-  left: 0;
-  right: 0;
   margin: 0 auto;
   color: white;
 }
@@ -10,7 +7,6 @@
   padding: 0 20px;
   text-align: center;
   font-size: 30px;
-  margin-top: 50%;
   line-height: 1.2;
 }
 

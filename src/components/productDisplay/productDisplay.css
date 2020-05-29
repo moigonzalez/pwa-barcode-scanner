@@ -1,5 +1,7 @@
 .productDisplay__container {
   padding: 15px;
+  flex: 1;
+  width: 90%;
 }
 
 .button__container {
