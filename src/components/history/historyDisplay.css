@@ -1,6 +1,8 @@
 .history__list {
   flex: 1;
   width: 90%;
+  max-height: 100%;
+  overflow: auto;
 }
 
 .history__listItem {
