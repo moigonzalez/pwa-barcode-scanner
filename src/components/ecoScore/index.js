@@ -6,6 +6,7 @@ const EcoScore = ({ score }) => {
   }
 
   return <img
+  className="nutriscore__detail nutriscore__image"
     src={`https://static.openfoodfacts.org/images/attributes/ecoscore-${score}.svg`}
     alt="ecoscore" />
 }
