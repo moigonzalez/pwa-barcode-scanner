@@ -11,6 +11,7 @@ import Additives from './additives';
 import AddProductInfo from '../addProductInfo';
 import NutriScore from '../nutriScore';
 import NovaGroup from '../novaGroup';
+import EcoScore from '../ecoScore';
 
 const ProductDataDisplay = ({ data }) => {
   const { code, status, product } = data;
@@ -39,6 +40,7 @@ const ProductDataDisplay = ({ data }) => {
       <div className="productDisplay__scores">
         <NutriScore score={product.nutrition_grades} extraClass="nutriscore__detail" />
         <NovaGroup group={product.nova_group} tag={product.nova_groups_tags} />
+        <EcoScore score={product.ecoscore_grade} />
       </div>
       {p !== undefined ?
         (<>
