@@ -16,7 +16,6 @@ const Video = ({ history }) => {
   const [ barcode, setBarcode ] = useState(null);
 
   const onProductFound = (code) => {
-    Quagga.stop();
     if (code === 'not-found') {
       history.push(`/product/${code}?code=${barcode}`);
     } else {
@@ -70,7 +69,9 @@ const Video = ({ history }) => {
           onInitSuccess();
       });
       Quagga.onDetected(onDetected);
+      return () => Quagga.stop();
     }
+    return undefined;
   }, []);
 
   useEffect(() => {
