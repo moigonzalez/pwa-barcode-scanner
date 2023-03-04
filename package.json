@@ -45,7 +45,7 @@
     "babel-loader": "^8.0.5",
     "copy-webpack-plugin": "^5.1.1",
     "css-loader": "^2.1.0",
-    "cypress": "^4.4.0",
+    "cypress": "^4.12.1",
     "eslint": "^6.5.0",
     "eslint-config-airbnb": "^18.0.1",
     "eslint-config-prettier": "^6.3.0",
